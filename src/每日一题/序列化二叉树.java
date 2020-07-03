@@ -42,7 +42,7 @@ public class 序列化二叉树 {
 
     // 通过前序序列化字符串，构建相应二叉树
     TreeNode Deserialize() {
-        if (deserializeStr == null)
+        if (deserializeStr == null || deserializeStr.length() == 0)
             return null;
         int index = deserializeStr.indexOf(" ");
         String c;
