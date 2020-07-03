@@ -9,12 +9,9 @@ import java.util.Stack;
 public class No_155Min_Stack_Easy {
 
     private Stack<Integer> stack;
+    // 辅助栈
     private Stack<Integer> minStack;
     private int min;
-
-    public static void main(String[] args) {
-
-    }
 
     /**
      * initialize your data structure here.
@@ -27,7 +24,7 @@ public class No_155Min_Stack_Easy {
 
     public void push(int x) {
         stack.add(x);
-        min = Math.min(min,x);
+        min = Math.min(min, x);
         minStack.add(min);
     }
 
