@@ -29,7 +29,7 @@ public class No_33搜索旋转排序数组 {
                     nums[mid] = Integer.MAX_VALUE;
                 }
             } else {  // target在右半段
-                // 并且mid在左半段
+                // 并且mid在左半段，nums[mid] 可能与nums[0] 处于同一位置，一定别忘了“=”
                 if (nums[mid] >= nums[0]) {
                     nums[mid] = Integer.MIN_VALUE;
                 }
