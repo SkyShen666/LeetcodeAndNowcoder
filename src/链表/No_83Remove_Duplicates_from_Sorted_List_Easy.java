@@ -33,4 +33,24 @@ public class No_83Remove_Duplicates_from_Sorted_List_Easy {
         head.next = deleteDuplicates(head.next);
         return head.val == head.next.val ? head.next : head;
     }
+    /**
+     * 方法二：
+     * public ListNode deleteDuplicates(ListNode head) {
+     *         if (head == null) {
+     *             return null;
+     *         }
+     *         ListNode pre = head;
+     *         ListNode next = pre.next;
+     *         while (next != null) {
+     *             if (pre.val == next.val) {
+     *                 pre.next = next.next;
+     *                 next = pre.next;
+     *             } else {
+     *                 pre = next;
+     *                 next = pre.next;
+     *             }
+     *         }
+     *         return head;
+     *     }
+     */
 }
