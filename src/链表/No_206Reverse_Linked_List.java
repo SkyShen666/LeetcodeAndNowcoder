@@ -10,19 +10,20 @@ package 链表;
  */
 public class No_206Reverse_Linked_List {
     /**
-     * 迭代法，使用pre，cur两个指针
-     * temp指针用于保存cur.next，在cur.next变更前保存
+     * 迭代法
      * @param head
      * @return
      */
     public ListNode reverseList(ListNode head) {
-        ListNode pre = null;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode pre  = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
         return pre;
     }
