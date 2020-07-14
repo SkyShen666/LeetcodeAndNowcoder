@@ -15,6 +15,9 @@ import java.util.ArrayList;
 public class 顺时针打印矩阵 {
     public ArrayList<Integer> printMatrix(int [][] matrix) {
         ArrayList<Integer> ret = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) {
+            return ret;
+        }
         int r1 = 0, r2 = matrix.length - 1;
         int c1 = 0, c2 = matrix[0].length - 1;
         //从[0,0]开始顺时针遍历
