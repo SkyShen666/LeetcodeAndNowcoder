@@ -1,10 +1,6 @@
 package 树;
 
 public class No_543Diameter_of_Binary_Tree_Easy {
-    public static void main(String[] args) {
-
-    }
-
     private int diameter = 0;
 
     public int diameterOfBinaryTree(TreeNode root) {

@@ -12,32 +12,32 @@ public class No_230Kth_Smallest_Element_in_a_BST_Medium {
      * @param k
      * @return
      */
-    private int count = 0;
-    private int val = 0;
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
+        int count = 0;
+        int retValue = 0;
+        TreeNode curNode = root;
+        while (curNode != null || !stack.isEmpty()) {
+            while (curNode != null) {
+                stack.push(curNode);
+                curNode = curNode.left;
             }
-            TreeNode node = stack.pop();
+            curNode = stack.pop();
             count++;
             if (count == k) {
-                val = node.val;
+                retValue = curNode.val;
                 break;
             }
-            cur = node.right;
+            curNode = curNode.right;
         }
-        return val;
+        return retValue;
     }
 
 
     /**
      * 方法二：
      *      暴力解法：中序递归遍历的优化
+     *      剪枝处理
      * @param root
      * @param k
      * @return
