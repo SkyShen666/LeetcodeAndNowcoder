@@ -16,11 +16,89 @@ package 链表;
  *      使用小根堆对方法一进行优化，
  *      每次O(logK)比较 K个指针求min
  *      时间复杂度：O(NlogK)
+ * 方法三：两两合并，逐一合并两条链表
+ *      时间复杂度：O(NK)
+ * 方法四：两两合并对方法三进行优化（递归、迭代）
+ *      时间复杂度：O(NlogK)
  */
 
 import java.util.*;
 public class No_23合并K个排序链表 {
+    // 两两合并优化（递归）
     public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return merge(lists, 0, lists.length - 1);
+    }
+
+    private ListNode merge(ListNode[] lists, int low, int high) {
+        if (low == high) {
+            return lists[low];
+        }
+        int mid = low + (high - low) / 2;
+        ListNode l1 = merge(lists, low, mid);
+        ListNode l2 = merge(lists, mid + 1, high);
+        return merge2Lists(l1, l2);
+    }
+
+    private ListNode merge2Lists(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val < l2.val) {
+            l1.next = merge2Lists(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = merge2Lists(l1, l2.next);
+            return l2;
+        }
+    }
+}
+
+    /*// 两两合并，迭代
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        int k = lists.length;
+        while (k > 1) {
+            int idx = 0;
+            for (int i = 0; i < k; i += 2) {
+                if (i == k - 1) {
+                    lists[idx++] = lists[i];
+                } else {
+                    lists[idx++] = merge2Lists(lists[i], lists[i + 1]);
+                }
+            }
+            k = idx;
+        }
+        return lists[0];
+    }
+
+    private ListNode merge2Lists(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode tail = dummyHead;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                tail.next = l1;
+                l1 = l1.next;
+            } else {
+                tail.next = l2;
+                l2 = l2.next;
+            }
+            tail = tail.next;
+        }
+        tail.next = l1 == null ? l2 : l1;
+        return dummyHead.next;
+    }*/
+
+
+//  方法二：使用小顶堆优化
+/*    public ListNode mergeKLists(ListNode[] lists) {
         // 创建小顶堆
         PriorityQueue<ListNode> pq = new PriorityQueue<>((v1, v2) -> v1.val - v2.val);
         for (ListNode node : lists) {
@@ -40,6 +118,4 @@ public class No_23合并K个排序链表 {
             }
         }
         return dummyHead.next;
-    }
-}
-
+    }*/
