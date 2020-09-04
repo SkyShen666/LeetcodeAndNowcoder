@@ -9,4 +9,15 @@ public class 二叉树的深度 {
     public int TreeDepth(TreeNode root) {
         return root == null ? 0 : 1 + Math.max(TreeDepth(root.left), TreeDepth(root.right));
     }
+
+    /**
+     * public int maxDepth(TreeNode root) {
+     *         if (root == null) {
+     *             return 0;
+     *         }
+     *         int leftDepth = 1 + maxDepth(root.left);
+     *         int rightDepth = 1 + maxDepth(root.right);
+     *         return Math.max(leftDepth, rightDepth);
+     *     }
+     */
 }
