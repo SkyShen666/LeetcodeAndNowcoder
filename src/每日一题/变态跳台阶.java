@@ -11,6 +11,8 @@ import java.util.Arrays;
  *   J(n)   = J(n-1) + J(n-2) + ... + J(1);
  *   ==>
  *   J(n) = J(n-1) * 2;
+ *
+ *   注意与 leetcode 70题 区别
  */
 public class 变态跳台阶 {
     public int JumpFloorII(int target) {
