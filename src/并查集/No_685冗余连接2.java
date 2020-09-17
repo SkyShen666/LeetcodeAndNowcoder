@@ -56,7 +56,7 @@ public class No_685冗余连接2 {
         public UnionFind(int n) {
             rpNode = new int[n];
             // 初始化代表结点
-            for (int i = 0; i < n; i++) {
+            for (int i = 1; i <= n; i++) {
                 rpNode[i] = i;
             }
         }
