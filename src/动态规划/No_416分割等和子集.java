@@ -22,9 +22,9 @@ public class No_416分割等和子集 {
         //base case
         dp[0] = true;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = sum; j >= nums[i]; j--) {
-                dp[j] = dp[j] | dp[j - nums[i]];
+        for (int num : nums) {
+            for (int j = sum; j >= num; j--) {
+                dp[j] |= dp[j - num];
             }
         }
         return dp[sum];
