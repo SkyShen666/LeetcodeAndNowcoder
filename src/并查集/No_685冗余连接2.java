@@ -24,9 +24,11 @@ public class No_685冗余连接2 {
             }
         }
 
-        // 若无入度为2的结点，用并查集删除形成环的边
+        // 若无入度为2的结点，尝试删除入度为1的有向边，看剩下的是否成环
         for (int i = n - 1; i >= 0; i--) {
+            // 不能删除入度为0的有向边
             if(inDegree[edges[i][1]] == 1) {
+                // 剩下的不成环，应该删除此边
                 if(!judgeCircle(edges, n, i)) {
                     return edges[i];
                 }
