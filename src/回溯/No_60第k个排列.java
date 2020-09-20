@@ -21,7 +21,7 @@ public class No_60第k个排列 {
     /**
      *
      * @param n
-     * @param index 在进行这一步前，已经选了若干数字，index的值恰好等于要选的那个数字
+     * @param index 在进行这一步前，已经选了若干数字，index为已经选了index个数字
      * @param path
      */
     private void dfs(int n, int index, StringBuilder path) {
