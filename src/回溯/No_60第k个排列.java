@@ -19,7 +19,7 @@ public class No_60第k个排列 {
     }
 
     /**
-     *
+     *  利用了剪枝的思想，减去了大量枝叶，直接来到需要的叶子结点；
      * @param n
      * @param index 在进行这一步前，已经选了若干数字，index为已经选了index个数字
      * @param path
