@@ -21,20 +21,33 @@ import java.util.*;
 public class No_22括号生成 {
     List<String> res = new ArrayList<>();
     public List<String> generateParenthesis(int n) {
+        if (n == 0) {
+            return res;
+        }
         dfs(n, n, "");
         return res;
     }
 
-    private void dfs(int left, int right, String curStr) {
+    private void dfs(int left, int right, String path) {
+        // 每次生成新的字符串，无需回溯
         if (left == 0 && right == 0) {
-            res.add(curStr);
+            res.add(path.toString());
             return;
         }
-        if (left > 0) {
-            dfs(left - 1, right, curStr + "(");
+
+
+        // 剪枝
+        if (left < 0 || right < left) {
+            return;
         }
-        if (right > left) {
-            dfs(left, right - 1, curStr + ")");
+
+        if (left > 0) {
+            dfs(left - 1, right, path + "(");
+
+        }
+
+        if (right > 0) {
+            dfs(left, right - 1, path + ")");
         }
     }
 }
