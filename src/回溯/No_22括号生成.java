@@ -2,6 +2,8 @@ package 回溯;
 import java.util.*;
 
 /**
+ * https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
+ *
  * 判断回溯很简单，拿到一个问题，你感觉如果不穷举一下就没法知道答案，那就可以开始回溯了。
  *
  * 一般回溯的问题有三种：
@@ -29,14 +31,15 @@ public class No_22括号生成 {
     }
 
     private void dfs(int left, int right, String path) {
-        // 每次生成新的字符串，无需回溯
+        // 因为每一次尝试，都使用新的字符串变量，所以无需回溯
+        // 在递归终止的时候，直接把它添加到结果集即可，注意与「力扣」第 46 题、第 39 题区分
         if (left == 0 && right == 0) {
             res.add(path.toString());
             return;
         }
 
 
-        // 剪枝
+        // 剪枝（如图，左括号可以使用的个数严格大于右括号可以使用的个数，才剪枝，注意这个细节）
         if (left < 0 || right < left) {
             return;
         }
