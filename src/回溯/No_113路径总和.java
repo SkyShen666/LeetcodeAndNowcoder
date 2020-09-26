@@ -22,6 +22,8 @@ public class No_113路径总和 {
         path.addLast(root.val);
         if (root.left == null && root.right == null && currSum == root.val) {
             res.add(new ArrayList<>(path));
+            // 注意，这里若是加了return,下面的remove操作就不会执行
+            // 这样remove操作就少执行一次
         }
         dfs(root.left, path, currSum - root.val);
         dfs(root.right, path, currSum - root.val);
