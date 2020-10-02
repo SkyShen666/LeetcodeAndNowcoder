@@ -1,29 +1,26 @@
 package 二分查找;
 
+/**
+ * 为什么比较mid与right而不比较mid与left？
+ * 具体原因前面已经分析过了，简单讲就是因为我们找最小值，要偏向左找，目标值右边的情况会比较简单，容易区分，
+ * 所以比较mid与right而不比较mid与left。
+ */
 public class No_153寻找旋转排序数组中的最小值 {
-    public int findMin(int[] nums) {
-        int l = 0, h = nums.length - 1;
-        while (l < h) {
-            int mid = l + (h - l) / 2;
-            if (nums[mid] <= nums[h]) {
-                h = mid;
+    public static int findMin(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("数组为空，无最小元素");
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            // 注意比较中间数与最右边的数
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
             } else {
-                l = mid + 1;
+                right = mid;
             }
         }
-        return nums[l];
+        return nums[left];
     }
-
-    /**
-     public int findMin(int[] nums) {
-     int res = nums[0];
-     for (int i = 0; i < nums.length - 1; i++) {
-     if (nums[i] > nums[i + 1]) {
-     res = nums[i + 1];
-     break;
-     }
-     }
-     return res;
-     }
-     */
 }
