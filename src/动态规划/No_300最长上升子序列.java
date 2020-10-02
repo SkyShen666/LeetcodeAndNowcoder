@@ -1,24 +1,25 @@
 package 动态规划;
-
+import java.util.*;
 public class No_300最长上升子序列 {
-    public static int findMin(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException("数组为空，无最小元素");
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
         }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            // 警惕{1,3,3} 没旋转
-            // {3,3,1,3}
-            if (nums[mid] == nums[right]) {
-                right--;
-            } else if (nums[mid] > nums[right]) {
-                left = mid + 1;
-            } else {
-                right = mid;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        for(int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
             }
         }
-        return nums[left];
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            res = Math.max(res, dp[i]);
+        }
+        return res;
     }
 }

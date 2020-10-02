@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JUC/CAS/CAS.iml" filepath="$PROJECT_DIR$/../JUC/CAS/CAS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JUC/Container/Container.iml" filepath="$PROJECT_DIR$/../JUC/Container/Container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JUC/JUC.iml" filepath="$PROJECT_DIR$/../JUC/JUC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JUC/JUCAPI/JUCAPI.iml" filepath="$PROJECT_DIR$/../JUC/JUCAPI/JUCAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/LeetCode.iml" filepath="$PROJECT_DIR$/LeetCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JUC/Lock/Lock.iml" filepath="$PROJECT_DIR$/../JUC/Lock/Lock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JUC/volatile/volatile.iml" filepath="$PROJECT_DIR$/../JUC/volatile/volatile.iml" />
     </modules>
   </component>
 </project>
