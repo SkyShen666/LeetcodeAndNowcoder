@@ -21,14 +21,14 @@ public class QuickSort {
 
     private static void quickSort(int[] a, int low, int high) {
         if (low < high) {
-            int pivotPos = partiton(a, low, high);
+            int pivotPos = partition(a, low, high);
             quickSort(a, low, pivotPos - 1);
             quickSort(a, pivotPos + 1, high);
         }
     }
 
     //partition就是划分操作
-    private static int partiton(int[] a, int low, int high) {
+    private static int partition(int[] a, int low, int high) {
         int pivot = a[low]; //将当前表中的第一个元素设为枢轴值，对表进行划分
         while (low < high) {
             while (low < high && a[high] >= pivot) --high;
