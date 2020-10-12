@@ -16,11 +16,11 @@ public class No377_组合总和4 {
         // base case
         dp[0] = 1;
 
-        for (int i = 0; i <= target; i++) {
-            for (int j = 0; j < n; j++)
-                if (i >= nums[j]) {
+        for (int i = 1; i <= target; i++) {
+            for (int num : nums)
+                if (i >= num) {
                     // 当i==nums[j]时，以nums[j]为结尾的所有排列就一个，所以可知直接使dp[0]=1实现这一目的
-                    dp[i] = dp[i] + dp[i - nums[j]];
+                    dp[i] = dp[i] + dp[i - num];
                 }
         }
         return dp[target];
