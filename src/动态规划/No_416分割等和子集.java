@@ -56,11 +56,22 @@ public class No_416分割等和子集 {
 
         for (int i = 1; i < n; i++) {
             for (int j = 1; j <= sum; j++) {
+                // dp[i - 1][j] 存储的是上一层循环的值，若优化成一维
+                // dp[j] = dp[j] 右边的dp[j]还没有被更新过，存储的是上一层循环的值
+                // 即 dp[j] = dp[j] 与 dp[i][j] = dp[i - 1][j] 是等价的。
                 dp[i][j] = dp[i - 1][j];
                 if (j >= nums[i])
                     dp[i][j] = dp[i][j] | dp[i - 1][j - nums[i]];
+                    // 优化：dp[j] = dp[j] | dp[j - num];
+                    // 此时dp[j - num] 等价于 dp[i][j - num]，
+                    // 由于是从小到大遍历j，所以j - num < j , 那么 j - num 会被先计算出来
+                    // 所以此处的dp[j - num] 一定是第i层的, 即等价于dp[i][j - num]，与原方程不等价
+                    // 而此处应该是dp[i - 1][j - num]，
+                    // 所以把内层循环改成从大到小循环，就能保证在算dp[j]时，是先算dp[j] 再算dp[j - num]
+                    // 那么此时的dp[j - num] 即为 上一层的 dp[j - num], 即等价于dp[i - 1][j - num]
             }
         }
+
         return dp[n - 1][sum];
     }
 }
