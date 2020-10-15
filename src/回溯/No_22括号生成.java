@@ -46,7 +46,6 @@ public class No_22括号生成 {
 
         if (left > 0) {
             dfs(left - 1, right, path + "(");
-
         }
 
         if (right > 0) {
