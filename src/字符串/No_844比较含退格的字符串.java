@@ -1,5 +1,9 @@
 package 字符串;
 
+/**
+ * https://leetcode-cn.com/problems/backspace-string-compare/solution/bi-jiao-han-tui-ge-de-zi-fu-chuan-by-leetcode-solu/
+ * 官方题解,双指针法
+ */
 public class No_844比较含退格的字符串 {
     public boolean backspaceCompare(String S, String T) {
         int i = S.length() - 1;
