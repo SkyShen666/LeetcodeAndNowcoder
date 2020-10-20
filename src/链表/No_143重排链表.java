@@ -1,5 +1,5 @@
 package 链表;
-
+import java.util.*;
 public class No_143重排链表 {
     public void reorderList(ListNode head) {
         if (head == null) {
