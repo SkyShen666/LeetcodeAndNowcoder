@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class No_763划分字母区间 {
-    public List<Integer> partitionLabels(String S) {
+    public static List<Integer> partitionLabels(String S) {
         int[] last = new int[26];
         //遍历一次，更新出每个字母最后出现的位置
         for (int i = 0; i < S.length(); i++) {
@@ -25,5 +25,11 @@ public class No_763划分字母区间 {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        String s = "ababcbacadefegdehijhklij";
+        List<Integer> list = partitionLabels(s);
+        System.out.println(list);
     }
 }
