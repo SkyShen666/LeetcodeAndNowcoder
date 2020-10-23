@@ -9,8 +9,13 @@ package 链表;
  *     ListNode next;
  *     ListNode(int x) { val = x; }
  * }
+ *
+ * 解法：（三步走
+ *      1. 找到分割点,并分割成两个链表
+ *      2. 后半链表进行倒置(尾插法)
+ *      3. 对两段链表进行比较
  */
-public class No_234Palindrome_Linked_List_Easy {
+public class No_234回文链表 {
     public static void main(String[] args) {
 
     }
@@ -31,42 +36,41 @@ public class No_234Palindrome_Linked_List_Easy {
         if (head == null || head.next == null) {
             return true;
         }
-        ListNode slow = head, fast = head.next; //fast指向偶结点
-        while (fast != null && fast.next != null){
+        ListNode slow = head, fast = head.next;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-        if (fast != null) {
-            slow = slow.next;
-        }
-        cut(head,slow);
-        return isEqual(head,reverse(slow));
+        slow = slow.next;
+        cut(head, slow);
+        return isEqual(head, reverse(slow));
     }
 
-    private ListNode reverse(ListNode head) {
-        ListNode newHead = new ListNode(-1);
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = newHead.next;
-            newHead.next = head;
-            head = next;
-        }
-        return newHead.next;
-    }
-
-    private boolean isEqual(ListNode l1, ListNode l2) {
-        while (l1 != null && l2 != null) {
-            if (l1.val != l2.val) {
+    private boolean isEqual(ListNode h1, ListNode h2) {
+        while (h1 != null && h2 != null) {
+            if (h1.val != h2.val) {
                 return false;
             }
-            l1 = l1.next;
-            l2 = l2.next;
+            h1 = h1.next;
+            h2 = h2.next;
         }
         return true;
     }
 
+    private ListNode reverse(ListNode head) {
+        ListNode dummyHead = new ListNode(-1);
+        // 头插法
+        while(head != null) {
+            ListNode next = head.next;
+            head.next = dummyHead.next;
+            dummyHead.next = head;
+            head = next;
+        }
+        return dummyHead.next;
+    }
+
     private void cut(ListNode head, ListNode cutNode) {
-        while (head.next != cutNode) {
+        while(head.next != cutNode) {
             head = head.next;
         }
         head.next = null;
