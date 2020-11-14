@@ -3,10 +3,10 @@ package 数学;
 import java.util.*;
 
 // 蓄水池问题
-public class No_398随机数索引 {
+public class No_398随机数索引_蓄水池 {
     private Map<Integer, ArrayList<Integer>> map;
     private int[] nums;
-    public No_398随机数索引(int[] nums) {
+    public No_398随机数索引_蓄水池(int[] nums) {
         if (nums.length > 0) {
             map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
