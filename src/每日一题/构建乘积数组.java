@@ -14,19 +14,24 @@ import java.util.ArrayList;
  *      对于右边的累乘： 从右往左计算
  */
 public class 构建乘积数组 {
-    public int[] multiply(int[] A) {
-        int n = A.length;
-        int[] B = new int[n];
-        int product = 1;
-        for (int i = 0; i <n; i++) {   //从左往右累乘
-            B[i] = product;
-            product *= A[i];
+    public int[] constructArr(int[] a) {
+        int len = a.length;
+        int[] b = new int[len];
+
+        // 记录从自己左边的累乘
+        int temp = 1;
+        for (int i = 0; i < len; i++) {
+            b[i] = temp;
+            temp *= a[i];
         }
-        product = 1;
-        for (int i = n - 1; i >= 0; i--) { // 从右往左的累乘
-            B[i] *= product;
-            product *= A[i];
+
+        // 从自己右边的累乘,注意要记录上左边的累乘
+        temp = 1;
+        for (int i = len - 1; i >= 0; i--) {
+            b[i] *= temp;
+            temp *= a[i];
         }
-        return B;
+
+        return b;
     }
 }

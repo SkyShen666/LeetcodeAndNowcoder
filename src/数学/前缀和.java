@@ -13,15 +13,15 @@ public class 前缀和 {
     public static int rand(int[] nums) {
         int n = nums.length;
         int sum = 0;
-        int[] prefixNum = new int[n];
+        int[] sums = new int[n];
         for (int i = 0; i < n; i++) {
             sum += nums[i];
-            prefixNum[i] = sum;
+            sums[i] = sum;
         }
         Random r = new Random();
         int num = r.nextInt(sum);
         for (int i = 0; i < n; i++) {
-            if (num < prefixNum[i]) {
+            if (num < sums[i]) {
                 return nums[i];
             }
         }
