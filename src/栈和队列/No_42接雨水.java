@@ -14,29 +14,29 @@ import java.util.*;
 
 public class No_42接雨水 {
     public int trap(int[] height) {
-        if (height == null || height.length < 3) {
+        if (height.length < 3) {
             return 0;
         }
-        Stack<Integer> stack = new Stack<>();
-        int amount = 0;
+        Deque<Integer> stack = new LinkedList<>();
+        int sum = 0;
         for (int i = 0; i < height.length; i++) {
             while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
-                int curIndex = stack.pop();
+                int tmpIndex = stack.pop();
                 // 若栈顶和出栈元素相等，则一直pop出去
-                while (!stack.isEmpty() && height[curIndex] == height[stack.peek()]) {
+                while (!stack.isEmpty() && height[tmpIndex] == height[stack.peek()]) {
                     stack.pop();
                 }
                 if (!stack.isEmpty()) {
                     int topIndex = stack.peek();
                     // topIndex此时指向的是此次接住雨水的左边界。右边界是当前柱体，即i。
                     // Math.min(height[stackTop], height[i]) 是左右柱子高度的min，减去height[curIdx]就是雨水的高度。
-                    // i - stackTop - 1 是雨水的宽度。(注意，用curIndex - stackTop 就错了，可能会少雨水)
-                    amount += (Math.min(height[stack.peek()], height[i]) - height[curIndex]) * (i - topIndex - 1);
+                    // i - stackTop - 1 是雨水的宽度。(注意，用tmpIndex - stackTop 就错了，可能会少雨水)
+                    sum += (Math.min(height[topIndex], height[i]) - height[tmpIndex]) * (i - topIndex - 1);
                 }
             }
-            stack.add(i);
+            stack.push(i);
         }
-        return amount;
+        return sum;
     }
 }
 

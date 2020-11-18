@@ -6,20 +6,10 @@ public class No_367Valid_Perfect_Square {
         System.out.println(result);
     }
 
-    /**
-     * 1 = 1 * 1  差值
-     * 4 = 2 * 2   3
-     * 9 = 3 * 3   5
-     * 16 = 4 * 4  7
-     * 25 = 5 * 5  9
-     * 36 = 6 * 6  11
-     * 49 = 7 * 7  13
-     * 64 = 8 * 8  15
-     * 81 = 9 * 9  17
-     * 100 = 10 * 10 19
-     * @param num
-     * @return
-     */
+     // (n + 1)^2 - n^2 = 2n + 1
+     // 4 = 1 + 3           其中 3 = 2*1 + 1
+     // 9 = 1 + 3 + 5            5 = 2*2 + 1
+     // 16 = 1 + 3 + 5 + 7       7 = 2*3 + 1
     private static boolean isPerfectSquare(int num) {
         int subNum = 1;
         while (num > 0){

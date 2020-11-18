@@ -24,19 +24,18 @@ package 动态规划;
 import java.util.*;
 public class No_139单词拆分 {
     public static boolean wordBreak(String s, List<String> wordDict) {
-        Set<String> wordDictSet = new HashSet<>(wordDict);
-        // dp[i] 表示 [0, i - 1]的字符串能否满足条件
-        boolean[] dp = new boolean[s.length() + 1];
-        // 边界条件:空字符串也可以表示
+        int n = s.length();
+        // dp[i]表示：[0, i - 1] 中的字符串，是否可以被拆分成字典中的单词。
+        boolean[] dp = new boolean[n + 1];
         dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
-                if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
-                    dp[i] = true;
+                dp[i] = dp[j] && wordDict.contains(s.substring(j, i));
+                if (dp[i]) {
                     break;
                 }
             }
         }
-        return dp[s.length()];
+        return dp[n];
     }
 }
