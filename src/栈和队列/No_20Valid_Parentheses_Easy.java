@@ -8,6 +8,17 @@ public class No_20Valid_Parentheses_Easy {
         System.out.println(rs);
     }
 
+/**
+    public boolean isValid(String s) {
+        int length = s.length() / 2;
+        for (int i = 0; i < length; i++) {
+            s = s.replace("()","");
+            s = s.replace("{}","");
+            s = s.replace("[]","");
+        }
+        return s.length() == 0;
+    }
+*/
     /**
      * 共三种括号：()、{}、[]
      *

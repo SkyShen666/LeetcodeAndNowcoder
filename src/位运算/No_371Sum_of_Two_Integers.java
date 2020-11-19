@@ -25,6 +25,13 @@ public class No_371Sum_of_Two_Integers {
      * @return
      */
     private static int getSum(int a, int b) {
-        return b == 0 ? a : getSum((a ^ b) , ((a & b ) << 1));
+        int sum, carry;
+        do {
+            sum = a ^ b;
+            carry = (a & b) << 1;
+            a = sum;
+            b = carry;
+        } while (carry != 0);
+        return sum;
     }
 }
