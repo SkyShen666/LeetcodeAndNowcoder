@@ -1,13 +1,14 @@
 package 回溯;
+
 import java.util.*;
+
 public class No_37解数独 {
-    // i：第i行，j：数字digit
-    private boolean[][] row;
+    private boolean[][] row; // i：第i行，j：数字digit
     private boolean[][] col;
     private boolean[][][] block;
     private boolean valid;
-    // 存储空白格位置
-    private List<int[]> spaces;
+    private List<int[]> spaces; // 存储空白格位置
+
     public void solveSudoku(char[][] board) {
         // j 下标从0开始，而需要存储数字1-9
         // 对应row[1][9]: 第1行，是否存储数字9
@@ -30,6 +31,7 @@ public class No_37解数独 {
     }
 
     private void dfs(char[][] board, int begin) {
+        // 已经填充完
         if (begin == spaces.size()) {
             valid = true;
             return;
@@ -39,9 +41,10 @@ public class No_37解数独 {
         int i = space[0], j = space[1];
         for (int digit = 1; digit <= 9 && !valid; digit++) {
             if (!row[i][digit] && !col[j][digit] && !block[i / 3][j / 3][digit]) {
-                board[i][j] = (char)(digit + '0');
+                board[i][j] = (char) (digit + '0');
                 row[i][digit] = col[j][digit] = block[i / 3][j / 3][digit] = true;
                 dfs(board, begin + 1);
+                // 回溯
                 row[i][digit] = col[j][digit] = block[i / 3][j / 3][digit] = false;
             }
         }

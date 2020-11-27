@@ -3,18 +3,17 @@ package 树;
 import 链表.ListNode;
 
 public class No_572Subtree_of_Another_Tree_Easy {
-    public static void main(String[] args) {
-
-    }
-
     public boolean isSubtree(TreeNode s, TreeNode t) {
-        if (s == null) {
+        if (s == null && t == null) {
+            return true;
+        }
+        if (s == null || t == null) {
             return false;
         }
-        return isSubtreeWithRoot(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+        return isSameTree(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
     }
 
-    public boolean isSubtreeWithRoot(TreeNode s, TreeNode t) {
+    private boolean isSameTree(TreeNode s, TreeNode t) {
         if (s == null && t == null) {
             return true;
         }
@@ -24,7 +23,7 @@ public class No_572Subtree_of_Another_Tree_Easy {
         if (s.val != t.val) {
             return false;
         }
-        return isSubtreeWithRoot(s.left, t.left) && isSubtreeWithRoot(s.right, t.right);
+        return isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
     }
 
 /*

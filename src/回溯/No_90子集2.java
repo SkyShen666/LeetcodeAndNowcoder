@@ -8,23 +8,23 @@ public class No_90子集2 {
         if (n == 0) {
             return res;
         }
-        Deque<Integer> path = new ArrayDeque<>();
+        // 排序
         Arrays.sort(nums);
-        backtrack(nums, 0, path);
+        List<Integer> path = new ArrayList<>();
+        dfs(nums, 0, path);
         return res;
     }
 
-    private void backtrack(int[] nums, int begin, Deque<Integer> path) {
+    private void dfs(int[] nums, int begin, List<Integer> path) {
         res.add(new ArrayList<>(path));
         for (int i = begin; i < nums.length; i++) {
             // 剪枝
             if (i > begin && nums[i] == nums[i - 1]) {
                 continue;
             }
-
-            path.addLast(nums[i]);
-            backtrack(nums, i + 1, path);
-            path.removeLast();
+            path.add(nums[i]);
+            dfs(nums, i + 1, path);
+            path.remove(path.size() - 1);
         }
     }
 }

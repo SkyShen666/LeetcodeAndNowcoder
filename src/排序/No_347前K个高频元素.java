@@ -38,11 +38,10 @@ public class No_347前K个高频元素 {
         int[] topK = new int[k];
         int j = 0;
         for (int i = buckets.length - 1; i >= 0 && j < k; i--) {
-            if (buckets[i] == null) {
-                continue;
-            }
-            for (int num : buckets[i]) {
-                topK[j++] = num;
+            if (buckets[i] != null) {
+                for (int num : buckets[i]) {
+                    topK[j++] = num;
+                }
             }
         }
         return topK;

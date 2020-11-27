@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class No_95不同的二叉搜索树II {
-    public List<TreeNode> generateTrees(int n) {
+    public static List<TreeNode> generateTrees(int n) {
         List<TreeNode> ans = new ArrayList<>();
         if (n == 0) {
             return ans;
@@ -13,7 +13,7 @@ public class No_95不同的二叉搜索树II {
         return getAns(1,n);
     }
 
-    private List<TreeNode> getAns(int start, int end) {
+    private static List<TreeNode> getAns(int start, int end) {
         List<TreeNode> ans = new ArrayList<>();
         //此时没有数字，将null放入ans
         if (start > end) {
@@ -45,5 +45,12 @@ public class No_95不同的二叉搜索树II {
             }
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        List<TreeNode> list = generateTrees(3);
+        for (TreeNode node : list) {
+            System.out.println(node.val);
+        }
     }
 }

@@ -2,13 +2,14 @@ package 哈希表;
 import java.util.*;
 
 /**
+ * 前缀和：
+ * pre[] 前缀和数组
  * pre[i] = pre[i - 1] + nums[i];
  * 而 [j,i] 这个子数组和为k,可转化为
  * pre[i] - pre[j - 1] = k
  * 即pre[i] - k = pre[j - 1];
  * 所以我们考虑以 i 结尾的和为 k 的连续子数组个数时
  * 只要统计有多少个前缀和为pre[i]−k的pre[j]即可。
-
  */
 public class No_560和为K的子数组 {
     public int subarraySum(int[] nums, int k) {

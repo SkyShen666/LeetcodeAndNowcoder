@@ -1,28 +1,24 @@
 package 二分查找;
 
+/**
+ * 参考题解：
+ * https://leetcode-cn.com/problems/sqrtx/solution/er-fen-cha-zhao-niu-dun-fa-python-dai-ma-by-liweiw/
+ */
 public class No_69 {
-    public static void main(String[] args) {
-        int n = mySqrt(8);
-        System.out.println(n);
-    }
-
-    private static int mySqrt(int x) {
-        if(x <= 1){
+    public int mySqrt(int x) {
+        if (x <= 1) {
             return x;
         }
-        int l = 1, h = x;
-        while (l <= h){
-            int mid = l + (h - l) / 2;
-            int sqrt = x / mid;
-            if(sqrt == mid){
-                return sqrt;
-            }else if(sqrt < mid){
-                h = mid - 1;
-            }else {
-                l = mid + 1;
+        long left = 1, right = x / 2;
+        while (left < right) {
+            long mid = left + (right - left + 1) / 2;
+            if (mid * mid > x) {
+                right = mid - 1;
+            } else {
+                left = mid;
             }
         }
-        return h;
+        return (int) left;
     }
 
 /*
