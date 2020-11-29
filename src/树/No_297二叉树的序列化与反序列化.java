@@ -23,7 +23,7 @@ public class No_297二叉树的序列化与反序列化 {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] dataArray = data.split(",");
-        List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
+        List<String> dataList = new ArrayList<>(Arrays.asList(dataArray));
         return buildTree(dataList);
     }
 

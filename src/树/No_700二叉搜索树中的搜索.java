@@ -12,7 +12,7 @@ public class No_700二叉搜索树中的搜索 {
         }
 
         TreeNode cur = root;
-        while(true) {
+        while (true) {
             if (cur.val == val) {
                 return cur;
             } else if (cur.val > val) {
@@ -28,7 +28,7 @@ public class No_700二叉搜索树中的搜索 {
             }
         }
     }
-
+}
     // 递归解法：
 //    public TreeNode searchBST(TreeNode root, int val) {
 //        if (root == null) {
@@ -43,4 +43,4 @@ public class No_700二叉搜索树中的搜索 {
 //            return searchBST(root.left, val);
 //        }
 //    }
-}
+

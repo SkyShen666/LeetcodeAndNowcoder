@@ -14,17 +14,18 @@ public class No_33搜索旋转排序数组 {
             }
             // mid在左边
             if (nums[mid] >= nums[left]) {
-                // target在左边
+                // target在mid左边
                 if (target >= nums[left] && target <= nums[mid]) {
                     right = mid - 1;
-                } else { // target在右边
+                } else { // target在mid右边
                     left = mid + 1;
                 }
             } else { // mid在右边
-                // target在右边
+                // target在mid右边
                 if (target > nums[mid] && target <= nums[right]) {
                     left = mid + 1;
                 } else {
+                    // target在mid左边
                     right = mid - 1;
                 }
             }

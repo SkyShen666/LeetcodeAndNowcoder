@@ -33,11 +33,11 @@ public class No_206Reverse_Linked_List {
             }
 
             // 头插法
-            ListNode head2 = null;
+            ListNode pre = null;
             while (head != null) {
                 ListNode next = head.next;
-                head.next = head2;
-                head2 = head;
+                head.next = pre;
+                pre = head;
                 head = next;
             }
             return head2;
