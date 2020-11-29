@@ -6,6 +6,9 @@ public class No_92反转链表II待解决 {
             return head;
         }
 
+        // 当m = 1时，必须搞一个head之前的dummyHead
+        // 否则会出现空指针错误
+        // 如[3->5], m = 1, n =2, 在第二次cur.next时会出现空指针错误
         ListNode dummyHead = new ListNode(-1);
         dummyHead.next = head;
         ListNode cur = dummyHead;

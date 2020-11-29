@@ -2,37 +2,47 @@ package 链表;
 
 public class No_25K个一组翻转链表 {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (k <= 1 || head == null)
+        if (head == null || head.next == null || k <= 1) {
             return head;
-        ListNode start = new ListNode(-1);
-        start.next = head;
-        ListNode pre = start;
-        ListNode end = start;
+        }
+
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode cur = dummyHead;
+        ListNode end = dummyHead;
         while (end.next != null) {
-            for (int i = 0; i < k && end != null; i++)
+            for (int i = 0; i < k && end != null; i++) {
                 end = end.next;
+            }
             if (end == null) {
                 break;
             }
-            ListNode temp = end.next;
+            ListNode endNext = end.next;
             end.next = null;
-            ListNode begin = pre.next;
-            pre.next = reverse(begin);
-            begin.next = temp;
-            pre = begin;
-            end = pre;
+            ListNode begin = cur.next;
+            cur.next = reverse(begin);
+
+            // 接上后面的链表
+            begin.next = endNext;
+
+            // 更新指针
+            cur = begin;
+            end = cur;
         }
-        return start.next;
+        return dummyHead.next;
     }
 
     private ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
         ListNode pre = null;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
         return pre;
     }

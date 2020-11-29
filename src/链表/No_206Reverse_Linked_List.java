@@ -40,7 +40,7 @@ public class No_206Reverse_Linked_List {
                 pre = head;
                 head = next;
             }
-            return head2;
+            return pre;
         }
      */
 }
