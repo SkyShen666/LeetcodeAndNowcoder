@@ -16,9 +16,11 @@ package 位运算;
  Follow up: Could you solve it without loops/recursion?
  */
 public class No342Power_of_Four {
-    public static void main(String[] args) {
-        boolean rs = isPowerOfFour(1);
-        System.out.println(rs);
+    public boolean isPowerOfFour(int num) {
+        while (num > 0 && num % 4 == 0) {
+            num = num / 4;
+        }
+        return num == 1;
     }
 
     /**
@@ -26,12 +28,13 @@ public class No342Power_of_Four {
      * Integer.toString(int i, int radix):radix为进制的意思
      * @param num
      * @return
-     */
+
     private static boolean isPowerOfFour(int num) {
         String str = Integer.toString(num,4);
         System.out.println(str);
         return Integer.toString(num,4).matches("10*");
     }
+     */
 
     /**
      * 1 4 16 64 256 4

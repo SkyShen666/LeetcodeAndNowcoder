@@ -1,11 +1,11 @@
 package 位运算;
 
+/**
+ * 位运算
+ * 参考题解：
+ * https://leetcode-cn.com/problems/power-of-two/solution/power-of-two-er-jin-zhi-ji-jian-by-jyd/
+ */
 public class No_231Power_of_Two {
-    public static void main(String[] args) {
-        boolean rs =  isPowerOfTwo(3);
-        System.out.println(rs);
-    }
-
     /**
      * 方法三：运用&运算 1100
      *                 1011
@@ -23,18 +23,21 @@ public class No_231Power_of_Two {
      * @return
      */
     private static boolean isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
+        if (n <= 0) {
+            return false;
+        }
+        return (n & (n - 1)) == 0;
     }
+}
 
-    /**
+/**
      *方法二：bitCount
      * @param n
      * @return
-
     private static boolean isPowerOfTwo(int n) {
         return n > 0 && Integer.bitCount(n) == 1;
     }
-     */
+ */
 
 /*
 *自己写的方法
@@ -55,5 +58,3 @@ public class No_231Power_of_Two {
         return true;
     }
 */
-
-}

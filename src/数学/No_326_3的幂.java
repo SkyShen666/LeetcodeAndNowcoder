@@ -1,11 +1,6 @@
 package 数学;
 
-public class No_326Power_of_Three {
-    public static void main(String[] args) {
-        boolean result = isPowerOfThree(4);
-        System.out.println(result);
-    }
-
+public class No_326_3的幂 {
     private static boolean isPowerOfThree(int n) {
         while ( n > 0 && n % 3 == 0){
             n = n / 3;

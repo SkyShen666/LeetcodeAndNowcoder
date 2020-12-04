@@ -2,17 +2,18 @@ package 排序;
 
 public class No_26删除排序数组中的重复项 {
     public int removeDuplicates(int[] nums) {
-        int len = nums.length;
-        if (nums == null || len == 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        int i = 0;
-        for (int j = 1; j < len; j++) {
-            if (nums[i] != nums[j]) {
-                i++;
-                nums[i] = nums[j];
+
+        int n = nums.length;
+        int count = 0;
+        for (int i = 1; i < n; i++) {
+            if (nums[count] != nums[i]) {
+                count++;
+                nums[count] = nums[i];
             }
         }
-        return i + 1;
+        return count + 1;
     }
 }

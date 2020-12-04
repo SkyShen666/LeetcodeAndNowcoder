@@ -6,20 +6,25 @@ package 链表;
  */
 public class No_19删除链表的倒数第N个节点 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummyHead = new ListNode(0);
+        if (head == null) {
+            return head;
+        }
+
+        ListNode dummyHead = new ListNode(-1);
         dummyHead.next = head;
-        ListNode p = dummyHead;
-        ListNode q = dummyHead;
+        ListNode before = dummyHead;
+        ListNode after = dummyHead;
         while (n >= 0) {
-            q = q.next;
+            after = after.next;
             n--;
         }
 
-        while (q != null) {
-            p = p.next;
-            q = q.next;
+        while(after != null) {
+            before = before.next;
+            after = after.next;
         }
-        p.next = p.next.next;
+
+        before.next = before.next.next;
         return dummyHead.next;
     }
 }

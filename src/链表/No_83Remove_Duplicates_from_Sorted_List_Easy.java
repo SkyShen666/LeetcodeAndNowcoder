@@ -38,15 +38,17 @@ public class No_83Remove_Duplicates_from_Sorted_List_Easy {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode pre = head;
-        ListNode next = pre.next;
-        while (next != null) {
-            if (pre.val == next.val) {
-                pre.next = next.next;
+
+        ListNode before = head;
+        ListNode after = head.next;
+        while (after != null) {
+            if (before.val == after.val) {
+                before.next = after.next;
+                after = before.next;
             } else {
-                pre = next;
+                before = before.next;
+                after = after.next;
             }
-            next = pre.next;
         }
         return head;
     }

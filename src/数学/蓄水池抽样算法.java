@@ -1,7 +1,14 @@
 package 数学;
-
 import java.util.*;
 
+/**
+ * 蓄水池抽样（Reservoir Sampling ）能够在o（n）时间内对n个数据进行等概率随机抽取，
+ * 对于未知的大小的数据抽样效果很好，而且能够应对数据一直增加的情况。
+ *
+ * 蓄水池抽样的主要思想是，先选定第一个样本，而后的第i个样本有1 / i 的几率替换之前的样本，
+ * 可以证明，每个节点最终被选中的概率都是1/n，
+ * 证明过程可以参照这篇博文。http://www.cnblogs.com/hrlnw/archive/2012/11/27/2777337.html
+ */
 public class 蓄水池抽样算法 {
     public static int[] randomReservoir(int[] datastream, int m) {
         int[] reservoir = new int[m];

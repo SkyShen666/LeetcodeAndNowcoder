@@ -12,19 +12,20 @@ public class No_31下一个排列 {
         if (nums == null || nums.length <= 1) {
             return;
         }
+
         // 从后向前遍历
         int i = nums.length - 2;
-        // 找出第一个不满足升序要求的
+        // 找出第一个不满足升序要求的（以从后向前的角度）
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
-        // 交换一个更大一些的数
+        // 找到并交换一个比nums[i]更大的数（同样需要最大索引，需要从后往前遍历）
         if (i >= 0) {
             int j = nums.length - 1;
             while (j >= 0 && nums[i] >= nums[j]) {
                 j--;
             }
-            if (i != j) {
+            if (i != j) { // 只有i=0，j=0时相等
                 swap(nums, i, j);
             }
         }

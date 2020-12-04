@@ -1,27 +1,18 @@
 package 排序;
 
 public class No_27移除元素 {
-    public static int removeElement(int[] nums, int val) {
-        int len = nums.length;
-        if (nums == null || len == 0) {
+    public int removeElement(int[] nums, int val) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        int i = 0;
-        for (int j = 0; j < len; j++) {
-            if (nums[j] != val) {
-                nums[i] = nums[j];
-                i++;
+        int n = nums.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != val) {
+                nums[count] = nums[i];
+                count++;
             }
         }
-        return i;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {3,2,2,3};
-        int res = removeElement(nums, 3);
-        System.out.println(res);
-        for (int num : nums) {
-            System.out.print(num + ",");
-        }
+        return count;
     }
 }
