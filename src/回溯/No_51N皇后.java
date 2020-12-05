@@ -1,4 +1,5 @@
 package 回溯;
+
 import java.util.*;
 
 /**
@@ -6,55 +7,57 @@ import java.util.*;
  * https://leetcode-cn.com/problems/n-queens/solution/gen-ju-di-46-ti-quan-pai-lie-de-hui-su-suan-fa-si-/
  */
 public class No_51N皇后 {
-    private Set<Integer> col;
-    private Set<Integer> sub;
-    private Set<Integer> main;
+    private List<List<String>> ret;
     private int n;
-    private List<List<String>> res;
+    private Set<Integer> col;  // 列，（按行进行遍历，所以不需要存储行的Set）
+    private Set<Integer> main; // 主对角线
+    private Set<Integer> sub;  // 副对角线
 
     public List<List<String>> solveNQueens(int n) {
-        this.n = n;
-        res = new ArrayList<>();
+        ret = new ArrayList<>();
         if (n == 0) {
-            return res;
+            return ret;
         }
 
+        this.n = n;
         col = new HashSet<>();
-        sub = new HashSet<>();
         main = new HashSet<>();
+        sub = new HashSet<>();
+        Deque<Integer> path = new LinkedList<>();
 
-        Deque<Integer> path = new ArrayDeque<>();
         dfs(0, path);
-        return res;
+
+        return ret;
     }
 
-    private void dfs(int row, Deque<Integer> path) {
-        if (row == n) {
-            List<String> board = convert2board(path);
-            res.add(board);
+    // 针对行号为begin的每一列进行遍历
+    private void dfs(int begin, Deque<Integer> path) {
+        if (begin == n) {
+            List<String> board = convert2Board(path);
+            ret.add(board);
             return;
         }
 
-        // 针对行号为row的每一列，进行遍历
         for (int i = 0; i < n; i++) {
-            if (!col.contains(i) && !sub.contains(row + i) && !main.contains(row - i)) {
+            if (!col.contains(i) && !main.contains(begin - i) && !sub.contains(begin + i)) {
                 path.addLast(i);
                 col.add(i);
-                sub.add(row + i);
-                main.add(row - i);
+                main.add(begin - i);
+                sub.add(begin + i);
 
-                dfs(row + 1, path);
+                dfs(begin + 1, path);
 
-                main.remove(row - i);
-                sub.remove(row + i);
+                sub.remove(begin + i);
+                main.remove(begin - i);
                 col.remove(i);
                 path.removeLast();
             }
         }
     }
 
-    private List<String> convert2board(Deque<Integer> path) {
+    private List<String> convert2Board(Deque<Integer> path) {
         List<String> board = new ArrayList<>();
+
         for (Integer num : path) {
             StringBuilder row = new StringBuilder();
             for (int i = 0; i < n; i++) {
@@ -66,6 +69,7 @@ public class No_51N皇后 {
             }
             board.add(row.toString());
         }
+
         return board;
     }
 }
