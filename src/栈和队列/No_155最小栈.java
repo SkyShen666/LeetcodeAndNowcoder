@@ -1,31 +1,27 @@
 package 栈和队列;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * MinStack
  * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
  */
-public class No_155Min_Stack_Easy {
-
-    private Stack<Integer> stack;
-    // 辅助栈
-    private Stack<Integer> minStack;
+public class No_155最小栈 {
+    private Deque<Integer> stack;
+    private Deque<Integer> minStack; // 辅助栈：只存最小值
     private int min;
 
-    /**
-     * initialize your data structure here.
-     */
-    public No_155Min_Stack_Easy() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
+    /** initialize your data structure here. */
+    public No_155最小栈() {
+        stack = new LinkedList<>();
+        minStack = new LinkedList<>();
         min = Integer.MAX_VALUE;
     }
 
     public void push(int x) {
-        stack.add(x);
+        stack.push(x);
         min = Math.min(min, x);
-        minStack.add(min);
+        minStack.push(min);
     }
 
     public void pop() {

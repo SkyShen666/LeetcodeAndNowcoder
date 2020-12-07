@@ -1,6 +1,6 @@
 package 树;
 
-public class No_617Merge_Two_Binary_Trees_Easy {
+public class No_617合并二叉树 {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null) {
             return null;

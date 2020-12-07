@@ -1,5 +1,7 @@
 package 链表;
 
+import java.util.Arrays;
+
 /**
  * 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
  *
@@ -22,26 +24,36 @@ package 链表;
  *      时间复杂度：O(NlogK)
  */
 
-import java.util.*;
+
+// 两两合并优化（递归，分治）
+// 参考题解：
+// （推荐）（https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/duo-tu-yan-shi-23-he-bing-kge-pai-xu-lian-biao-by-/
+// https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/4-chong-fang-fa-xiang-jie-bi-xu-miao-dong-by-sweet/
 public class No_23合并K个排序链表 {
-    // 两两合并优化（递归）
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
         }
+
         return merge(lists, 0, lists.length - 1);
     }
 
+    // 通过mid将数组一分为二，并不断缩小规模，当规模为1时返回并开始合并
+    // 通过合并两个链表，不断增大其规模，整体看就是不断缩小-最后不断扩大的过程
     private ListNode merge(ListNode[] lists, int low, int high) {
         if (low == high) {
             return lists[low];
         }
+
         int mid = low + (high - low) / 2;
+
         ListNode l1 = merge(lists, low, mid);
         ListNode l2 = merge(lists, mid + 1, high);
+
         return merge2Lists(l1, l2);
     }
 
+    //合并两个有序链表
     private ListNode merge2Lists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
@@ -49,6 +61,7 @@ public class No_23合并K个排序链表 {
         if (l2 == null) {
             return l1;
         }
+
         if (l1.val < l2.val) {
             l1.next = merge2Lists(l1.next, l2);
             return l1;
