@@ -1,28 +1,48 @@
 package 数组与矩阵;
 
 public class No_695岛屿的最大面积 {
+    private static final int[] di = {1, -1, 0, 0};
+    private static final int[] dj = {0, 0, -1, 1};
+    private int[][] grid;
+    private int m;
+    private int n;
+    private int max;
+
     public int maxAreaOfIsland(int[][] grid) {
-        int res = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+
+        this.grid = grid;
+        m = grid.length;
+        n = grid[0].length;
+        max = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
-                    res = Math.max(res, dfs(i, j, grid));
+                    max = Math.max(max, dfs(i, j));
                 }
             }
         }
-        return res;
+
+        return max;
     }
 
-    private int dfs(int i, int j, int[][] grid) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] == 0) {
+    private int dfs(int i, int j) {
+        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 0) {
             return 0;
         }
-        int num = 1;
+
+        int tmp = 1;
         grid[i][j] = 0;
-        num += dfs(i + 1, j, grid);
-        num += dfs(i - 1, j, grid);
-        num += dfs(i, j + 1, grid);
-        num += dfs(i, j - 1, grid);
-        return num;
+
+        for (int k = 0; k < 4; k++) {
+            int nextI = i + di[k];
+            int nextJ = j + dj[k];
+            tmp += dfs(nextI, nextJ);
+        }
+
+        return tmp;
     }
 }

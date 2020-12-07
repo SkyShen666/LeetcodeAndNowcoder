@@ -1,59 +1,62 @@
 package 树;
 
-/**
- * Your MapSum object will be instantiated and called as such:
- * MapSum obj = new MapSum();
- * obj.insert(key,val);
- * int param_2 = obj.sum(prefix);
- */
+// 可先做208题
+// 前缀树
 public class No_677键值映射 {
-    private class Node {
-        Node[] childs = new Node[26];
-        int value;
+    private class TrieNode {
+        TrieNode[] childs = new TrieNode[26];
+        int val;
     }
 
-     /** Initialize your data structure here. */
+    private TrieNode root;
+
+    /**
+     * Initialize your data structure here.
+     */
     public No_677键值映射() {
-
+        root = new TrieNode();
     }
-
-    Node root = new Node();
 
     public void insert(String key, int val) {
-        insert(key , val , root);
+        insert(key, val, root);
     }
 
-    private void insert(String key, int val, Node node) {
-        if (node == null) return;
-        if (key.length() == 0) {
-            node.value = val;
+    private void insert(String key, int val, TrieNode node) {
+        if (node == null) {
             return;
         }
-        int index = indexForChar(key.charAt(0));
-        if (node.childs[index] == null) {
-            node.childs[index] = new Node();
+        if (key.length() == 0) {
+            node.val = val;
+            return;
         }
-        insert(key.substring(1) , val , node.childs[index]);
+
+        int index = key.charAt(0) - 'a';
+        if (node.childs[index] == null) {
+            node.childs[index] = new TrieNode();
+        }
+        insert(key.substring(1), val, node.childs[index]);
     }
 
     public int sum(String prefix) { //相当于208题的Trie树的search
-        return sum(prefix , root);
+        return sum(prefix, root);
     }
 
-    private int sum(String prefix, Node node) {
-        if (node == null) return 0;
+    private int sum(String prefix, TrieNode node) {
+        if (node == null) {
+            return 0;
+        }
+
         if (prefix.length() != 0) {
-            int index = indexForChar(prefix.charAt(0));
-            return sum(prefix.substring(1) , node.childs[index]);
+            int index = prefix.charAt(0) - 'a';
+            return sum(prefix.substring(1), node.childs[index]);
         }
-        int sum = node.value;
-        for (Node child : node.childs) {
-            sum += sum(prefix , child);
-        }
-        return sum;
-    }
 
-    private int indexForChar(char c) {
-        return c - 'a';
+        int sum = node.val;
+        for (TrieNode child : node.childs) {
+            // 此处不需要prefix.substring(1)，因为prefix = "" 为空字符串
+            sum += sum(prefix, child);
+        }
+
+        return sum;
     }
 }
