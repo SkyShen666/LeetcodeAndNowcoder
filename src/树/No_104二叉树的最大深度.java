@@ -9,12 +9,15 @@ package 树;
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class No_104Maximum_Depth_of_Binary_Tree_Easy {
-
+public class No_104二叉树的最大深度 {
     public int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;
+
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+
+        return Math.max(leftDepth, rightDepth) + 1;
     }
 }

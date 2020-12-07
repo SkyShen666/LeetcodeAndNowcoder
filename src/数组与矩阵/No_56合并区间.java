@@ -1,4 +1,4 @@
-package 数组与矩阵;
+ package 数组与矩阵;
 
 import java.util.*;
 
@@ -16,22 +16,27 @@ import java.util.*;
  */
 public class No_56合并区间 {
     public int[][] merge(int[][] intervals) {
-        // 根据每个区间的起始排序（升序）
-        Arrays.sort(intervals, (v1, v2) -> v1[0] - v2[0]);
-        int[][] res = new int[intervals.length][2];
-        // 此时代表res为空
-        int idx = -1;
+        if (intervals == null || intervals.length == 0) {
+            return intervals;
+        }
+
+
+        int n = intervals.length;
+        int[][] ret = new int[n][2];
+        Arrays.sort(intervals, (o1, o2) -> o1[0] - o2[0]); // 根据每个区间的起始排序（升序）
+        int i = -1; // 此时代表res为空
+
         for (int[] interval : intervals) {
-            // 若res为空，或res上一个区间的末尾，小于下一个区间的开始
-            // 则直接加入res
-            if (idx == -1 || res[idx][1] < interval[0]) {
-                res[++idx] = interval;
+            if (i == -1 || ret[i][1] < interval[0]) {
+                i++;
+                ret[i] = interval;
             } else {
-                res[idx][1] = Math.max(res[idx][1], interval[1]);
+                ret[i][1] = Math.max(ret[i][1], interval[1]);
             }
         }
-        // 注意返回res中有数据长度的数组
-        // 并且idx代表的索引，这里copyOf()方法的newLength是新数组长度，idx要+1
-        return Arrays.copyOf(res, idx + 1);
+
+        // 注意返回ret中有数据长度的数组
+        // 并且idx代表的索引，这里copyOf()方法的newLength是新数组长度，i要+1
+        return Arrays.copyOf(ret, i + 1);
     }
 }
