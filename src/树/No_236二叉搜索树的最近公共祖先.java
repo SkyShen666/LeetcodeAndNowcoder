@@ -6,7 +6,7 @@ package 树;
  * 最近公共祖先：需要先知道左右子树的情况，然后决定向上返回什么
  * 因此「后序遍历」的思想是很关键。
  */
-public class No_236Lowest_Common_Ancestor_of_a_Binary_Tree_Medium {
+public class No_236二叉搜索树的最近公共祖先 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
             return root;
