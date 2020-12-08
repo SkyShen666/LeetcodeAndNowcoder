@@ -6,8 +6,8 @@ public class No_674最长连续递增序列 {
             return 0;
         }
 
-        int max = 0;
         int n = nums.length;
+        int max = 0;
         int begin = 0;
 
         for (int i = 1; i < n; i++) {
