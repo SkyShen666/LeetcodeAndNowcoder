@@ -13,29 +13,33 @@ package 树;
  * 链接：https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/solution/er-cha-shu-zhong-de-zui-da-lu-jing-he-by-leetcode-/
  */
 public class No_124二叉树中的最大路径和 {
-    private int maxSum = Integer.MIN_VALUE;
+    private int max;
 
     public int maxPathSum(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        max = Integer.MIN_VALUE;
         dfs(root);
-        return maxSum;
+
+        return max;
     }
 
-    private int dfs(TreeNode node) {
-        if (node == null) {
+    private int dfs(TreeNode root) {
+        if (root == null) {
             return 0;
         }
 
         // 计算当前节点左分支、右分支的最大路径值，若为负数则不选择该分支的路径。
-        int leftMax = Math.max(dfs(node.left), 0);
-        int rightMax = Math.max(dfs(node.right), 0);
-
-        // 计算经过当前节点node的最大路径的值
-        int curMax = node.val + leftMax + rightMax;
-
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        left = left > 0 ? left : 0;
+        right = right > 0 ? right : 0;
         // 更新历史路径最大值
-        maxSum = Math.max(curMax, maxSum);
+        max = Math.max(max, root.val + left + right);
 
         // 返回给上一层经过当前节点node的单侧最大路径的值
-        return node.val + Math.max(leftMax, rightMax);
+        return root.val + Math.max(left, right);
     }
 }
