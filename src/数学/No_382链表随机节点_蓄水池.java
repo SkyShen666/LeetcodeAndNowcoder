@@ -2,6 +2,7 @@ package 数学;
 
 import java.util.*;
 
+// 蓄水池算法
 public class No_382链表随机节点_蓄水池 {
     private List<Integer> list;
     /** @param head The linked list's head.
@@ -17,7 +18,7 @@ public class No_382链表随机节点_蓄水池 {
 
     /** Returns a random node's value. */
     public int getRandom() {
-        int index = new Random().nextInt(list.size());
-        return list.get(index);
+        int i = new Random().nextInt(list.size());
+        return list.get(i);
     }
 }
