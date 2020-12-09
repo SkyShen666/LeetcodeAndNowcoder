@@ -1,38 +1,37 @@
 package 树;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class No_230Kth_Smallest_Element_in_a_BST_Medium {
     /**
      * 方法三：
-     *      中序非递归遍历法
+     * 中序非递归遍历法
+     *
      * @param root
      * @param k
      * @return
      */
     public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> stack = new Stack<>();
-        int count = 0;
-        int retValue = 0;
-        TreeNode curNode = root;
-        while (curNode != null || !stack.isEmpty()) {
-            while (curNode != null) {
-                stack.push(curNode);
-                curNode = curNode.left;
-            }
-            curNode = stack.pop();
-            count++;
-            if (count == k) {
-                retValue = curNode.val;
-                break;
-            }
-            curNode = curNode.right;
-        }
-        return retValue;
-    }
+        Deque<TreeNode> stack = new LinkedList<>();
+        int cnt = 0;
+        TreeNode currNode = root;
 
+        while (currNode != null || !stack.isEmpty()) {
+            while (currNode != null) {
+                stack.push(currNode);
+                currNode = currNode.left;
+            }
+            currNode = stack.pop();
+            cnt++;
+            if (cnt == k) {
+                return currNode.val;
+            }
+            currNode = currNode.right;
+        }
+
+        return 0;
+    }
+}
 
     /**
      * 方法二：
@@ -79,4 +78,3 @@ public class No_230Kth_Smallest_Element_in_a_BST_Medium {
         list.add(root.val);
         InorderTraversal(root.right, list);
     }*/
-}
