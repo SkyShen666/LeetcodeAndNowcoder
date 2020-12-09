@@ -2,11 +2,13 @@ package 字符串;
 
 public class No_925长按键入 {
     public boolean isLongPressedName(String name, String typed) {
+        int m = name.length();
+        int n = typed.length();
         int i = 0, j = 0;
+
         // 扫描type
-        while (j < typed.length()) {
-            // type[j] 与 name[i] 进行匹配
-            if (i < name.length() && name.charAt(i) == typed.charAt(j)) {
+        while (j < n) {
+            if (i < m && name.charAt(i) == typed.charAt(j)) {
                 i++;
                 j++;
             } else if (j > 0 && typed.charAt(j - 1) == typed.charAt(j)) {
@@ -17,8 +19,10 @@ public class No_925长按键入 {
         }
 
         // i == name.length() 说明name的每个字符都被匹配了
-        return i == name.length() ? true : false;
+        return i == m ? true : false;
     }
+}
+
 //    public boolean isLongPressedName(String name, String typed) {
 //        int nameLen = name.length();
 //        int typedLen = typed.length();
@@ -61,4 +65,4 @@ public class No_925长按键入 {
 //        }
 //        return true;
 //    }
-}
+

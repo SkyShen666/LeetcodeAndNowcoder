@@ -2,11 +2,13 @@ package 链表;
 
 public class No_141环形链表 {
     public boolean hasCycle(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return false;
         }
+
         ListNode slow = head;
         ListNode fast = head.next;
+
         while (slow != fast) {
             if (fast == null || fast.next == null) {
                 return false;
@@ -14,6 +16,7 @@ public class No_141环形链表 {
             slow = slow.next;
             fast = fast.next.next;
         }
+
         return true;
     }
 }
