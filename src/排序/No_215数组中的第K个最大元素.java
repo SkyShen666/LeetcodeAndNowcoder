@@ -21,6 +21,7 @@ public class No_215数组中的第K个最大元素 {
                 high = pivotPos - 1;
             }
         }
+
         return nums[low];
     }
 
@@ -33,19 +34,21 @@ public class No_215数组中的第K个最大元素 {
             a[high] = a[low];
         }
         a[low] = pivot;
+
         return low;
     }
 }
 /*
 堆：时间复杂度 O(NlogK)，空间复杂度 O(K)。
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(); //构建一个小顶堆
+        Queue<Integer> minHeap = new PriorityQueue<>(); //构建一个小顶堆
         for (int num : nums) {
             minHeap.add(num);
             if (minHeap.size() > k) {
                 minHeap.poll();
             }
         }
+
         return minHeap.peek();
     }
  */
