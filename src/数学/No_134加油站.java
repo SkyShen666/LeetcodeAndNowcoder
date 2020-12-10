@@ -19,6 +19,7 @@ public class No_134加油站 {
             }
         }
 
+        // ret % n：注意最后一个索引n-1的下一个出发点为0
         return remain >= 0 ? ret % n : -1;
     }
 }
