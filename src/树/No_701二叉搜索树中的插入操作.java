@@ -7,34 +7,40 @@ public class No_701二叉搜索树中的插入操作 {
             return new TreeNode(val);
         }
 
-        TreeNode cur = root;
-        while(true) {
-            if (cur.val > val) {
-                if (cur.left == null) {
-                    cur.left = new TreeNode(val);
+        TreeNode currNode = root;
+
+        while (true) {
+            if (currNode.val > val) {
+                if (currNode.left == null) {
+                    currNode.left = new TreeNode(val);
                     break;
                 }
-                cur = cur.left;
-            } else {
-                if (cur.right == null) {
-                    cur.right = new TreeNode(val);
+                currNode = currNode.left;
+            } else if (currNode.val < val) {
+                if (currNode.right == null) {
+                    currNode.right = new TreeNode(val);
                     break;
                 }
-                cur = cur.right;
+                currNode = currNode.right;
             }
         }
+
         return root;
     }
-    // 递归解法
+}
+// 递归解法
+//
 //    public TreeNode insertIntoBST(TreeNode root, int val) {
 //        if (root == null) {
 //            return new TreeNode(val);
 //        }
-//        if (root.val < val) {
-//            root.right = insertIntoBST(root.right, val);
-//        } else {
+//
+//        if (root.val > val) {
 //            root.left = insertIntoBST(root.left, val);
+//        } else if (root.val < val) {
+//            root.right = insertIntoBST(root.right, val);
 //        }
+//
 //        return root;
 //    }
-}
+//

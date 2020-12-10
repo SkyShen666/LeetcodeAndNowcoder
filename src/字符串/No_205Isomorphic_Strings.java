@@ -1,6 +1,6 @@
 package 字符串;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  *
@@ -18,31 +18,37 @@ import java.util.HashMap;
  o -> a
  o -> r
  其中 o 映射到了两个字母
+
+ 参考题解：
+ https://leetcode-cn.com/problems/isomorphic-strings/solution/javake-neng-bi-jiao-jian-dan-de-xie-fa-by-hao-fei-/
+
+ 要两个字符串的每个字符的映射都互相相等
+ “ab”,
+ "aa"
+ 需要 isSameStruct(s, t) && isSameStruct(t, s)
  */
+
 public class No_205Isomorphic_Strings {
-    public static void main(String[] args) {
-        boolean rs = isIsomorphic("ab" , "aa");
-        System.out.println(rs);
+    private boolean isIsomorphic(String s, String t) {
+        return isIsomorphicUtils(s, t) && isIsomorphicUtils(t, s);
     }
 
-    private static boolean isIsomorphic(String s, String t) {
-        return isIsomorphicUtils(s , t) && isIsomorphicUtils(t , s);
-    }
+    private boolean isIsomorphicUtils(String s, String t) {
+        Map<Character, Character> map = new HashMap<>();
 
-    private static boolean isIsomorphicUtils(String s, String t) {
-        HashMap<Character,Character> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
                 if (map.get(s.charAt(i)) != t.charAt(i)) {
                     return false;
                 }
             } else {
-                map.put(s.charAt(i) , t.charAt(i));
+                map.put(s.charAt(i), t.charAt(i));
             }
         }
+
         return true;
     }
-
+}
 
     /**
      * 方法一：代码逻辑重复
@@ -67,4 +73,4 @@ public class No_205Isomorphic_Strings {
         return true;
     }
      */
-}
+

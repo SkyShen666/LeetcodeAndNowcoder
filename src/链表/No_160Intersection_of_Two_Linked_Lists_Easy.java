@@ -35,14 +35,14 @@ public class No_160Intersection_of_Two_Linked_Lists_Easy {
      * @return
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode pA = headA, pB = headB;
+        ListNode pA = headA;
+        ListNode pB = headB;
+
         while (pA != pB) {
-            // 思考 pA.next == null 就超时了
-            // null == null ==> true
-            // 若用pA.next 这种判断条件,在两个链表无交点时，pA,pB永远不会指向null，就会陷入死循环。
             pA = pA == null ? headB : pA.next;
             pB = pB == null ? headA : pB.next;
         }
+
         return pA;
     }
 }
