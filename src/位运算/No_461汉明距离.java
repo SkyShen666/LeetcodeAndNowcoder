@@ -1,39 +1,27 @@
 package 位运算;
 
-public class No_461Hamming_distance {
-    public static void main(String[] args) {
-        int n = hammingDistance(1, 4);
-        System.out.println(n);
-    }
-
-    /**
-     * 方法三：用Integer.bitCount()来返回1的个数
-     * @param x
-     * @param y
-     * @return
-     */
-    private static int hammingDistance(int x, int y) {
-        return Integer.bitCount(x ^ y);
-    }
-
-
-    /**
-     * 方法二：对x,y这两个数进行异或操作，每一位，相同为0，不同为1
-     * @param x
-     * @param y
-     * @return
-    private static int hammingDistance(int x, int y) {
-        int z = x ^ y;
-        int count = 0;
-        while (z != 0){
-            if ((z & 1) == 1){
-                count++;
+// 方法二：对x,y这两个数进行异或操作，每一位，相同为0，不同为1
+public class No_461汉明距离 {
+    public int hammingDistance(int x, int y) {
+        int num = x ^ y;
+        int cnt = 0;
+        while (num != 0) {
+            if ((num & 1) == 1) {
+                cnt++;
             }
-            z = z >> 1;
+            num = num >> 1;
         }
-        return count;
+
+        return cnt;
     }
-     */
+}
+
+//    方法三：用Integer.bitCount()来返回1的个数
+//
+//    private static int hammingDistance(int x, int y) {
+//        return Integer.bitCount(x ^ y);
+//    }
+
 
 /*
     *自己的方法，很笨
@@ -63,4 +51,3 @@ public class No_461Hamming_distance {
         }
         return count;
     }*/
-}

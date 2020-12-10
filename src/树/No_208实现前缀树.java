@@ -7,8 +7,8 @@ package 树;
  */
 public class No_208实现前缀树 {
     private class TrieNode {
-        TrieNode[] childs = new TrieNode[26];
-        boolean isLeaf;
+        private TrieNode[] childs = new TrieNode[26];
+        private boolean isLeaf;
     }
 
     private TrieNode root;
@@ -33,14 +33,15 @@ public class No_208实现前缀树 {
         }
         if (word.length() == 0) {
             node.isLeaf = true;
+
             return;
         }
 
-        int index = word.charAt(0) - 'a';
-        if (node.childs[index] == null) {
-            node.childs[index] = new TrieNode();
+        int i = word.charAt(0) - 'a';
+        if (node.childs[i] == null) {
+            node.childs[i] = new TrieNode();
         }
-        insert(word.substring(1), node.childs[index]);
+        insert(word.substring(1), node.childs[i]);
     }
 
     /**
@@ -58,9 +59,9 @@ public class No_208实现前缀树 {
             return node.isLeaf;
         }
 
-        int index = word.charAt(0) - 'a';
+        int i = word.charAt(0) - 'a';
 
-        return search(word.substring(1), node.childs[index]);
+        return search(word.substring(1), node.childs[i]);
     }
 
     /**
@@ -78,8 +79,8 @@ public class No_208实现前缀树 {
             return true;
         }
 
-        int index = prefix.charAt(0) - 'a';
+        int i = prefix.charAt(0) - 'a';
 
-        return startsWith(prefix.substring(1), node.childs[index]);
+        return startsWith(prefix.substring(1), node.childs[i]);
     }
 }

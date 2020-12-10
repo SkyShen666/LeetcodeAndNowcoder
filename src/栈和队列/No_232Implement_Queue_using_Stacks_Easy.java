@@ -11,12 +11,13 @@ import java.util.Stack;
  */
 public class No_232Implement_Queue_using_Stacks_Easy {
 
-    private Stack<Integer> in = new Stack<>();
-    private Stack<Integer> out = new Stack<>();
+    private Stack<Integer> in;
+    private Stack<Integer> out;
 
     /** Initialize your data structure here. */
     public No_232Implement_Queue_using_Stacks_Easy() {
-
+        in = new Stack<>();
+        out = new Stack<>();
     }
 
     /** Push element x to the back of queue. */
