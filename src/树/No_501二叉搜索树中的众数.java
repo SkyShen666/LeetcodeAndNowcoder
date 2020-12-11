@@ -26,7 +26,7 @@ public class No_501二叉搜索树中的众数 {
         inorderTraverse(root);
 
         ret = new int[modeCnt];
-        modeCnt = 0;
+        modeCnt = 0; // 第二次遍历，充当ret数组的索引作用
         currCnt = 0;
         pre = null;
 

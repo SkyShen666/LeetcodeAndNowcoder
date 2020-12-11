@@ -7,23 +7,26 @@ public class No_515在每个树行中找最大值 {
         if (root == null) {
             return list;
         }
-        Queue<TreeNode> pq = new LinkedList<>();
-        pq.offer(root);
-        while (pq.size() > 0) {
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
             int max = Integer.MIN_VALUE;
-            int size = pq.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = pq.poll();
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
+                TreeNode node = queue.poll();
                 max = Math.max(max, node.val);
                 if (node.left != null) {
-                    pq.offer(node.left);
+                    queue.offer(node.left);
                 }
                 if (node.right != null) {
-                    pq.offer(node.right);
+                    queue.offer(node.right);
                 }
             }
             list.add(max);
         }
+
         return list;
     }
 }
