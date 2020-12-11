@@ -7,54 +7,61 @@ package 树;
  *      第二轮：填充众数
  */
 public class No_501二叉搜索树中的众数 {
-    private TreeNode pre = null;
-    private int[] result;
-    private int resultCount = 0; // 众数个数
-    private int maxCount = 0; // 同一个数最多的出现的次数
-    private int currCount = 0;
+    private TreeNode pre;
+    private int[] ret;
+    private int modeCnt; // 众数个数
+    private int maxCnt;  // 众数出现的频次
+    private int currCnt; // 当前数出现的频次
 
     public int[] findMode(TreeNode root) {
-        // 第一轮，查询 “众数个数”
-        inOrderTraverse(root);
+        if (root == null) {
+            return new int[]{};
+        }
 
-        // 复位
-        result = new int[resultCount];
+        modeCnt = 0;
+        maxCnt = 0;
+        currCnt = 0;
+
+        // 第一次中序遍历：查询众数个数，与众数出现的频次
+        inorderTraverse(root);
+
+        ret = new int[modeCnt];
+        modeCnt = 0;
+        currCnt = 0;
         pre = null;
-        resultCount = 0;
-        currCount = 0;
 
-        // 填充众数
-        inOrderTraverse(root);
-        return result;
+        // 第二次中序遍历：填充众数
+        inorderTraverse(root);
+
+        return ret;
     }
 
-    private void inOrderTraverse(TreeNode root) {
+    private void inorderTraverse(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        inOrderTraverse(root.left);
+        inorderTraverse(root.left);
 
-        // 和父节点的val是否相等
         if (pre != null && pre.val == root.val) {
-            currCount++;
+            currCnt++;
         } else {
-            currCount = 1;
+            currCnt = 1;
         }
 
-        // 是否需要更新众数:
-        if (currCount > maxCount) {
-            maxCount = currCount;
-            resultCount = 1;
-        } else if (currCount == maxCount) {
+        if (currCnt > maxCnt) {
+            modeCnt = 1;
+            maxCnt = currCnt;
+        } else if (currCnt == maxCnt) {
             // 第一轮只查询众数个数，第二轮才填充
-            if(result != null) {
-                result[resultCount] = root.val;
+            if (ret != null) {
+                ret[modeCnt] = root.val;
             }
-            resultCount++;
+            modeCnt++;
         }
+
         pre = root;
 
-        inOrderTraverse(root.right);
+        inorderTraverse(root.right);
     }
 }
