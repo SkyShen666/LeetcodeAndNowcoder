@@ -9,11 +9,10 @@ package 树;
 public class No_501二叉搜索树中的众数 {
     private TreeNode pre = null;
     private int[] result;
-    // 众数个数
-    private int resultCount = 0;
-    // 同一个数最多的出现的次数
-    private int maxCount = 0;
+    private int resultCount = 0; // 众数个数
+    private int maxCount = 0; // 同一个数最多的出现的次数
     private int currCount = 0;
+
     public int[] findMode(TreeNode root) {
         // 第一轮，查询 “众数个数”
         inOrderTraverse(root);

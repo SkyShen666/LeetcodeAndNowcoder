@@ -10,17 +10,19 @@ public class No_153寻找旋转排序数组中的最小值 {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("数组为空，无最小元素");
         }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            // 注意比较中间数与最右边的数
-            if (nums[mid] > nums[right]) {
-                left = mid + 1;
+
+        int n = nums.length;
+        int low = 0, high = n - 1;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (nums[mid] > nums[high]) {
+                low = mid + 1;
             } else {
-                right = mid;
+                high = mid;
             }
         }
-        return nums[left];
+
+        return nums[low];
     }
 }
