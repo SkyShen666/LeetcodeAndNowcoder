@@ -18,15 +18,16 @@ public class No_105从前序与中序遍历序列构造二叉树 {
             return null;
         }
 
+        int n = preorder.length;
         TreeNode root = new TreeNode(preorder[0]);
-        for(int i = 0; i < inorder.length; i++) {
-            if(inorder[i] == root.val) {
-                root.left = buildTree(Arrays.copyOfRange(preorder, 1, i + 1),
-                                        Arrays.copyOfRange(inorder, 0, i));
-                root.right = buildTree(Arrays.copyOfRange(preorder, i + 1, preorder.length),
-                                        Arrays.copyOfRange(inorder, i + 1, inorder.length));
+
+        for (int i = 0; i < n; i++) {
+            if (inorder[i] == root.val) {
+                root.left = buildTree(Arrays.copyOfRange(preorder, 1, i + 1), Arrays.copyOfRange(inorder, 0, i));
+                root.right = buildTree(Arrays.copyOfRange(preorder, i + 1, n), Arrays.copyOfRange(inorder, i + 1, n));
             }
         }
+
         return root;
     }
 }
