@@ -8,12 +8,14 @@ public class No_538Convert_BST_to_Greater_Tree_Easy {
 
     public TreeNode convertBST(TreeNode root) {
         if (root == null) {
-            return root;
+            return null;
         }
+
         convertBST(root.right);
         sum += root.val;
         root.val = sum;
         convertBST(root.left);
+
         return root;
     }
 }

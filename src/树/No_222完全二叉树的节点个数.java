@@ -20,8 +20,10 @@ public class No_222完全二叉树的节点个数 {
         if (root == null) {
             return 0;
         }
+
         int leftLevel = levelCount(root.left);
         int rightLevel = levelCount(root.right);
+
         if (leftLevel == rightLevel) {
             return (1 << leftLevel) + countNodes(root.right);
         } else {
@@ -31,10 +33,12 @@ public class No_222完全二叉树的节点个数 {
 
     private int levelCount(TreeNode root) {
         int level = 0;
+
         while (root != null) {
             level++;
             root = root.left;
         }
+
         return level;
     }
 }

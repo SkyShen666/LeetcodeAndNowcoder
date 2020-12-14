@@ -1,33 +1,41 @@
 package 回溯;
+
 import java.util.*;
 
 public class No_39组合总和 {
-    private List<List<Integer>> res;
+    private List<List<Integer>> list;
+    private int[] candidates;
+    private int n;
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        res = new ArrayList<>();
-        if (target == 0) {
-            return res;
+        list = new ArrayList<>();
+        if (candidates == null || candidates.length == 0) {
+            return list;
         }
-        Deque<Integer> path = new ArrayDeque<>();
+
+        this.candidates = candidates;
+        n = candidates.length;
         Arrays.sort(candidates);
-        backtrack(candidates, target, 0, path);
-        return res;
+        Deque<Integer> path = new LinkedList<>();
+
+        dfs(0, target, path);
+
+        return list;
     }
 
-    private void backtrack(int[] candidates, int target, int begin, Deque<Integer> path) {
+    private void dfs(int begin, int target, Deque<Integer> path) {
         if (target == 0) {
-            res.add(new ArrayList<>(path));
+            list.add(new ArrayList<>(path));
             return;
         }
 
-        for (int i = begin; i < candidates.length; i++) {
-            // 剪枝
+        for (int i = begin; i < n; i++) {
             if (target - candidates[i] < 0) {
                 break;
             }
 
             path.addLast(candidates[i]);
-            backtrack(candidates, target - candidates[i], i, path);
+            dfs(i, target - candidates[i], path);
             path.removeLast();
         }
     }

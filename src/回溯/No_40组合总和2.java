@@ -1,32 +1,47 @@
 package 回溯;
+
 import java.util.*;
+
 public class No_40组合总和2 {
-    private List<List<Integer>> res;
+    private List<List<Integer>> list;
+    private int[] candidates;
+    private int n;
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        res = new ArrayList<>();
-        List<Integer> list =  new ArrayList<>();
+        list = new ArrayList<>();
+        if (candidates == null || candidates.length == 0) {
+            return list;
+        }
+
+        this.candidates = candidates;
+        n = candidates.length;
         Arrays.sort(candidates);
-        backtrack(candidates, target, 0, list);
-        return res;
+        Deque<Integer> path = new LinkedList<>();
+
+        dfs(0, target, path);
+
+        return list;
     }
 
-    private void backtrack(int[] candidates, int target, int begin, List<Integer> list) {
+    private void dfs(int begin, int target, Deque<Integer> path) {
         if (target == 0) {
-            res.add(new ArrayList<>(list));
+            list.add(new ArrayList<>(path));
             return;
         }
 
-        for (int i = begin; i < candidates.length; i++) {
+        for (int i = begin; i < n; i++) {
+            // 大剪枝
             if (target - candidates[i] < 0) {
                 break;
             }
-            // i > begin 防止i = 0的情况下数组越界
+            // 小剪枝：同一层相同数值的结点，从第 2 个开始，候选数更少，结果一定发生重复，因此跳过，用 continue
             if (i > begin && candidates[i] == candidates[i - 1]) {
                 continue;
             }
-            list.add(candidates[i]);
-            backtrack(candidates, target - candidates[i], i + 1, list);
-            list.remove(list.size() - 1);
+
+            path.addLast(candidates[i]);
+            dfs(i + 1, target - candidates[i], path);
+            path.removeLast();
         }
     }
 }

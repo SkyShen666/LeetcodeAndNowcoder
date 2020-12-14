@@ -17,19 +17,21 @@ package 树;
  * 来源：力扣（LeetCode）
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
-public class No_108Convert_Sorted_Array_to_Binary_Search_Tree_Easy {
+public class No_108将有序数组转换为二叉搜索树 {
     public TreeNode sortedArrayToBST(int[] nums) {
         return partition(nums, 0, nums.length - 1);
     }
 
-    private TreeNode partition(int nums[], int low, int high) {
+    private TreeNode partition(int[] nums, int low, int high) {
         if (low > high) {
             return null;
         }
-        int mid = (high + low) / 2;
+
+        int mid = low + (high - low) / 2;
         TreeNode root = new TreeNode(nums[mid]);
-        root.left = partition(nums, low, mid -1);
+        root.left = partition(nums, low, mid - 1);
         root.right = partition(nums, mid + 1, high);
+
         return root;
     }
 }

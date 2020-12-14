@@ -1,33 +1,32 @@
 package 字符串;
 
-public class No696Count_Binary_Substrings {
-    public static void main(String[] args) {
-        int n = countBinarySubstrings("10101");
-        System.out.println(n);
-    }
+public class No696计数二进制子串 {
+    public int countBinarySubstrings(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
 
-    /**
-     * 方法二
-     * @param s
-     * @return
-     */
-    private static int countBinarySubstrings(String s) {
-        int preLen = 0 , curLen = 1 , count = 0;
-        for (int i = 1; i < s.length(); i++) {
+        int n = s.length();
+        int cnt = 0;
+        int preLen = 0;
+        int currLen = 1;
+
+        for (int i = 1; i < n; i++) {
             if (s.charAt(i) == s.charAt(i - 1)) {
-                curLen++;
+                currLen++;
             } else {
-                preLen = curLen;
-                curLen = 1;
+                preLen = currLen;
+                currLen = 1;
             }
-            if (preLen >= curLen) {
-                count++;
+
+            if (currLen <= preLen) {
+                cnt++;
             }
         }
-        return count;
+
+        return cnt;
     }
-
-
+}
 
 
 /*    private static int countBinarySubstrings(String s) {
@@ -59,4 +58,3 @@ public class No696Count_Binary_Substrings {
         }
         return count == 0 ? 1 : 0;
     }*/
-}

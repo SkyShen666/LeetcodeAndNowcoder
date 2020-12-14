@@ -3,12 +3,7 @@ package 动态规划;
 /**
  *递归和动态规划都是将原问题拆分成多个子问题然后求解，他们之间最本质的区别是，动态规划保存了子问题的解，避免重复计算
  */
-public class No_70 {
-    public static void main(String[] args) {
-        int n = climbStairs(4);
-        System.out.println(n);
-    }
-
+public class No_70爬楼梯 {
     /**
      * 优化后的动态规划
      *      dp[i]只与dp[i-2]dp[i-1]有关，只需用两个变量pre1、pre2分别代替即可，降低空间复杂度

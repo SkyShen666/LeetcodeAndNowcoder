@@ -35,20 +35,20 @@ public class No_204计数质数 {
 }
 
 
-    /**
-     * 解法一：暴力法
-     * 将isPrime那层循环的判定条件改为（由int j = 2; j < i; j++）
-     * int j = 2; j * j <= i; j++
-     * 理由如下：
-     * 12 = 2 × 6
-     * 12 = 3 × 4
-     * * 12 = sqrt(12) × sqrt(12)  注意此行为分界
-     * 12 = 4 × 3
-     * 12 = 6 × 2
-     *
-     * @param n
-     * @return
-     */
+/**
+ * 解法一：暴力法
+ * 将isPrime那层循环的判定条件改为（由int j = 2; j < i; j++）
+ * int j = 2; j * j <= i; j++
+ * 理由如下：
+ * 12 = 2 × 6
+ * 12 = 3 × 4
+ * * 12 = sqrt(12) × sqrt(12)  注意此行为分界
+ * 12 = 4 × 3
+ * 12 = 6 × 2
+ *
+ * @param n
+ * @return
+ */
 //    public int countPrimes(int n) {
 //        int cnt = 0;
 //        for (int i = 2; i < n; i++) {
