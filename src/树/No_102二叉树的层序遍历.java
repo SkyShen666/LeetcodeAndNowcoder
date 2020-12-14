@@ -4,28 +4,30 @@ import java.util.*;
 
 public class No_102二叉树的层序遍历 {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> lists = new ArrayList<>();
-        if (root == null) {
-            return lists;
+        List<List<Integer>> list = new ArrayList<>();
+        if(root == null) {
+            return list;
         }
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            List<Integer> list = new ArrayList<>();
-            while (size > 0) {
-                TreeNode node = queue.remove();
+
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.addLast(root);
+
+        while(!queue.isEmpty()) {
+            int n = queue.size();
+            List<Integer> path = new LinkedList<>();
+            for (int i = 0; i < n; i++) {
+                TreeNode node = queue.poll();
+                path.add(node.val);
                 if (node.left != null) {
-                    queue.add(node.left);
+                    queue.addLast(node.left);
                 }
                 if (node.right != null) {
-                    queue.add(node.right);
+                    queue.addLast(node.right);
                 }
-                list.add(node.val);
-                size--;
             }
-            lists.add(list);
+            list.add(path);
         }
-        return lists;
+
+        return list;
     }
 }

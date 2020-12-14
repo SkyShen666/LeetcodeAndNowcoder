@@ -21,6 +21,7 @@ public class No_124二叉树中的最大路径和 {
         }
 
         max = Integer.MIN_VALUE;
+
         dfs(root);
 
         return max;
