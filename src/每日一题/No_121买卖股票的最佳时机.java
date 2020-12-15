@@ -5,15 +5,19 @@ public class No_121买卖股票的最佳时机 {
         if (prices == null || prices.length == 0) {
             return 0;
         }
+
+        int n = prices.length;
         int minPrice = prices[0];
-        int maxProfit = 0;
-        for (int i = 1; i < prices.length; i++) {
+        int max = 0;
+
+        for (int i = 1; i < n; i++) {
             if (prices[i] < minPrice) {
                 minPrice = prices[i];
             } else {
-                maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+                max = Math.max(max, prices[i] - minPrice);
             }
         }
-        return maxProfit;
+
+        return max;
     }
 }

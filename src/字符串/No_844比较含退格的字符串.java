@@ -10,6 +10,7 @@ public class No_844比较含退格的字符串 {
         int j = T.length() - 1;
         int skipS = 0;
         int skipT = 0;
+
         // 逆序遍历
         while (i >=0 || j >= 0) {
             // 检查目前的退格数量,并退格
@@ -55,6 +56,7 @@ public class No_844比较含退格的字符串 {
             i--;
             j--;
         }
+
         return true;
     }
 }

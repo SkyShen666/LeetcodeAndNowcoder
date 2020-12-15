@@ -1,6 +1,6 @@
 package 贪心思想;
 
-public class No_121 {
+public class No_121买卖股票的最佳时机 {
     public static void main(String[] args) {
         int[] prices = {1,2,3,4,5};
         int profit = maxProfit(prices);
