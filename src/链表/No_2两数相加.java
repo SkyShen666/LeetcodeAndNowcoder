@@ -1,6 +1,4 @@
-package 数学;
-
-import java.util.*;
+package 链表;
 
 /**
  * 官方题解思路
@@ -13,6 +11,7 @@ public class No_2两数相加 {
         ListNode tail = dummyHead;
         ListNode p = l1, q = l2;
         int carry = 0;
+
         while (p != null || q != null) {
             int x = p == null ? 0 : p.val;
             int y = q == null ? 0 : q.val;
@@ -30,6 +29,7 @@ public class No_2两数相加 {
         if (carry > 0) {
             tail.next = new ListNode(carry);
         }
+
         return dummyHead.next;
     }
 }

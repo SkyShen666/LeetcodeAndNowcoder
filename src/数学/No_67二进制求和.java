@@ -1,29 +1,28 @@
 package 数学;
 
-public class No_67Add_Binary {
-    public static void main(String[] args) {
-        String sum = addBinary("100", "110010");
-        System.out.println(sum);
-    }
+public class No_67二进制求和 {
+    public String addBinary(String a, String b) {
+        StringBuilder str = new StringBuilder();
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
 
-    private static String addBinary(String a, String b) {
-        StringBuffer sb = new StringBuffer();
-        int indexA = a.length() - 1;
-        int indexB = b.length() - 1;
-        int temp = 0;
-        while (indexA >= 0 || indexB >= 0 || temp == 1){
-            if(indexA >= 0 && a.charAt(indexA--) == '1'){
-                temp++;
+        while (i >= 0 || j >= 0 || carry == 1) {
+            if (i >= 0 && a.charAt(i) == '1') {
+                carry++;
             }
-            if (indexB >= 0 && b.charAt(indexB--) == '1'){
-                temp++;
+            i--;
+            if (j >= 0 && b.charAt(j) == '1') {
+                carry++;
             }
-            sb.append(temp % 2);
-            temp = temp / 2;
+            j--;
+            str.append(carry % 2);
+            carry = carry / 2;
         }
-        return sb.reverse().toString();
-    }
 
+        return str.reverse().toString();
+    }
+}
 
 /*
   *自己写的方法，非常的笨和繁杂
@@ -85,4 +84,3 @@ public class No_67Add_Binary {
         int n = Integer.parseInt(String.valueOf(c));
         return n;
     }*/
-}
