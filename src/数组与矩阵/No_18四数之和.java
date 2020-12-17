@@ -4,6 +4,7 @@ import java.util.*;
 
 // 15.三数之和 进阶版
 // 在三数之和题解基础上再加一层循环
+// 排序 + 双指针
 public class No_18四数之和 {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> list = new ArrayList<>();
@@ -11,8 +12,8 @@ public class No_18四数之和 {
             return list;
         }
 
-        int n = nums.length;
         Arrays.sort(nums);
+        int n = nums.length;
 
         for (int p = 0; p < n - 3; p++) {
             if (p > 0 && nums[p] == nums[p - 1]) {
@@ -27,13 +28,13 @@ public class No_18四数之和 {
 
             // 三数之和
             for (int q = p + 1; q < n - 2; q++) {
-                if (q - p - 1 > 0 && nums[q] == nums[q - 1]) {
+                if (q > p + 1 && nums[q] == nums[q - 1]) {
                     continue;
                 }
                 if (nums[p] + nums[q] + nums[q + 1] + nums[q + 2] > target) {
                     break;
                 }
-                if (nums[p] + nums[q] + nums[n - 1] + nums[n - 2] < target) {
+                if (nums[p] + nums[q] + nums[n - 2] + nums[n - 1] < target) {
                     continue;
                 }
 
