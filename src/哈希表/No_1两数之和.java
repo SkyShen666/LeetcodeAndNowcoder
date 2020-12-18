@@ -2,23 +2,24 @@ package 哈希表;
 
 import java.util.*;
 
-public class No_1Two_Sum {
+public class No_1两数之和 {
     public int[] twoSum(int[] nums, int target) {
-        int n = nums.length;
-        if (n < 2) {
-            throw new IllegalArgumentException("数组长度小于2，非法输入！");
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("数组为空！");
         }
-        Map<Integer, Integer> indexForNum = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            if (indexForNum.containsKey(target - nums[i])) {
-                return new int[]{indexForNum.get(target - nums[i]), i};
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{map.get(target - nums[i]), i};
             } else {
-                indexForNum.put(nums[i], i);
+                map.put(nums[i], i);
             }
         }
+
         return null;
     }
-
+}
     // 暴力枚举
 //    public int[] twoSum(int[] nums, int target) {
 //        int n = nums.length;
@@ -34,4 +35,3 @@ public class No_1Two_Sum {
 //        }
 //        return new int[]{-1, -1};
 //    }
-}
