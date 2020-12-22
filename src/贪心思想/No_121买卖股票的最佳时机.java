@@ -1,26 +1,23 @@
 package 贪心思想;
 
 public class No_121买卖股票的最佳时机 {
-    public static void main(String[] args) {
-        int[] prices = {1,2,3,4,5};
-        int profit = maxProfit(prices);
-        System.out.println(profit);//profit = 6 - 1 = 5
-    }
-
-    private static int maxProfit(int[] prices) {
-        if(prices.length == 0 || prices == null){
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length == 0)
             return 0;
-        }
-        int maxProfit = 0;
+
+        int n = prices.length;
         int minPrice = prices[0];
-        for (int i = 1; i < prices.length; i++){
-            if(minPrice > prices[i]){
+        int max = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (minPrice < prices[i]) {
+                max = Math.max(max, prices[i] - minPrice);
+            } else {
                 minPrice = prices[i];
-            }else {
-                maxProfit = Math.max(maxProfit,prices[i] - minPrice);
             }
         }
-        return maxProfit;
+
+        return max;
     }
 /*
     public static int maxProfit(int[] prices){

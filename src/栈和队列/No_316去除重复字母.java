@@ -22,13 +22,14 @@ public class No_316去除重复字母 {
         Deque<Character> stack = new LinkedList<>();
         boolean[] visited = new boolean[26];
 
-        // 2. 通过遍历字符串，使用单调栈维护去除重复字母的字符串。
+        // 2. 通过遍历字符串，使用单调栈维护字典序最小的字符串
         for (int i = 0; i < n; i++) {
             char c = charArray[i];
             if (visited[c - 'a']) {
                 continue;
             }
 
+            // 在 ① 栈非空，② 当前元素字典序 < 栈顶元素，并且 ③ 栈顶元素在以后还会出现，弹出栈元素
             while (!stack.isEmpty() && c < stack.peekLast() && lastIndex[stack.peekLast() - 'a'] > i) {
                 char top = stack.removeLast();
                 // 注意维护visited数组
