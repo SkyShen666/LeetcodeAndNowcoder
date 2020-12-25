@@ -1,37 +1,33 @@
 package 回溯;
 
 public class No_79单词搜索 {
-    private int[] dx = {0, 0, -1, 1};
-    private int[] dy = {1, -1, 0, 0};
+    private static final int[] di = {1, -1, 0, 0};
+    private static final int[] dj = {0, 0, -1, 1};
     private char[][] board;
     private int m;
     private int n;
     private String word;
-    private int wordLen;
+    private int len;
     private boolean[][] visited;
+
     public boolean exist(char[][] board, String word) {
-        wordLen = word.length();
-        if (wordLen == 0) {
+        if (board == null || board.length == 0) {
             return false;
         }
 
-        m = board.length;
-        if (m == 0) {
-            return false;
-        }
-        n = board[0].length;
-        if (n == 0) {
-            return false;
-        }
-
-        this.word = word;
         this.board = board;
+        m = board.length;
+        n = board[0].length;
+        this.word = word;
+        len = word.length();
         visited = new boolean[m][n];
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (dfs(i, j, 0)) {
-                    return true;
+                if (word.charAt(0) == board[i][j]) {
+                    if (dfs(i, j, 0)) {
+                        return true;
+                    }
                 }
             }
         }
@@ -40,25 +36,24 @@ public class No_79单词搜索 {
     }
 
     private boolean dfs(int i, int j, int begin) {
-        if (begin == wordLen - 1) {
+        if (begin == len - 1) {
             return word.charAt(begin) == board[i][j];
         }
 
         if (board[i][j] == word.charAt(begin)) {
             visited[i][j] = true;
             for (int k = 0; k < 4; k++) {
-                int nextX = i + dx[k];
-                int nextY = j + dy[k];
-                // 满足条件：1、不越界 2、未曾访问
-                if (nextX >= 0 && nextX < m && nextY >= 0 && nextY < n && !visited[nextX][nextY]) {
-                    if (dfs(nextX, nextY, begin + 1)) {
+                int nextI = i + di[k];
+                int nextJ = j + dj[k];
+                if (nextI >= 0 && nextI < m && nextJ >= 0 && nextJ < n && !visited[nextI][nextJ]) {
+                    if (dfs(nextI, nextJ, begin + 1)) {
                         return true;
                     }
                 }
             }
-            // 回溯
             visited[i][j] = false;
         }
+
         return false;
     }
 }

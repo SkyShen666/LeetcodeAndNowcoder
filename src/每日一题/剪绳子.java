@@ -1,37 +1,27 @@
 package 每日一题;
 
 /**
- * 给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n>1并且m>1），
- * 每段绳子的长度记为k[0],k[1],...,k[m]。
- * 请问k[0]xk[1]x...xk[m]可能的最大乘积是多少？
- * 例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
- * f(2) = 1;
- * f(3) = 2;
- * f(4) = Max( f(3) * f(1) , f(2) * f(2) )
+ * 参考题解：
+ * https://leetcode-cn.com/problems/integer-break/solution/tan-xin-xuan-ze-xing-zhi-de-jian-dan-zheng-ming-py/
  */
 public class 剪绳子 {
-    public int cutRope(int target) {
-        if (target < 2) {
-            return 0;
-        }
-        if (target == 2) {
-            return 1;
-        }
-        if (target == 3) {
-            return 2;
-        }
-        int[] dp = new int[target + 1];
-        //每段长度
+    public int cuttingRope(int n) {
+        /*
+            dp[i] 表示 i 的 最大加数和：
+                对于任意一个数来讲，dp[i] 最大的可能为如下两点：
+                    1、其中一个加数 * 对应的加数(i - j)
+                    2、其中一个加数 * 对应的加数拆分后的最大乘积(dp[i - j])
+         */
+        int[] dp = new int[n + 1];
+        // 初始化
         dp[1] = 1;
-        dp[2] = 2;
-        dp[3] = 3;
-        int max = 0;
-        for (int i = 4; i <= target; i++) {
-            for (int j = 1; j <= i / 2; j++) {
-                dp[i] = Math.max(dp[j] * dp[i - j], max);
-                max = dp[i];
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i - 1; j++) {
+                dp[i] = Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]));
             }
         }
-        return max;
+
+        return dp[n];
     }
 }

@@ -1,27 +1,34 @@
 package 每日一题;
 
 /**
- * 给定一个double类型的浮点数base和int类型的整数exponent。
- * 求base的exponent次方。
- * 保证base和exponent不同时为0
+ * 分治思想
+ * 参考题解：
+ * https://leetcode-cn.com/problems/powx-n/solution/50-powx-n-kuai-su-mi-qing-xi-tu-jie-by-jyd/
  */
 public class 数值的整数次方 {
-    public double Power(double base, int exponent) {
-        if (exponent == 0) {
-            return 1; //注意0的0次方数学上无意义，输出1是可以接受的
+    public double myPow(double x, int n) {
+        if (x == 0) {
+            return 0;
         }
-        if (exponent == 1) {
-            return base;
+
+        long b = n;
+        double ret = 1;
+
+        // Java 代码中 int32 变量 n∈[−2147483648,2147483647] ，
+        // 因此当 n = -2147483648 时执行 n = -n 会因越界而赋值出错。
+        // 解决方法是先将 n 存入 long 变量 b ，后面用 b 操作即可。
+        if (b < 0) {
+            x = 1 / x;
+            b = -b;
         }
-        boolean isNegative = false;
-        if (exponent < 0) {
-            isNegative = true;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                ret *= x;
+            }
+            x *= x;
+            b >>= 1;
         }
-        exponent = Math.abs(exponent);
-        double power = Power(base * base, exponent / 2);
-        if (exponent % 2 != 0) {
-            power = power * base;
-        }
-        return isNegative == true ? 1 / power : power;
+
+        return ret;
     }
 }
