@@ -3,38 +3,37 @@ package 每日一题;
 import java.util.HashMap;
 
 /**
- * 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
- * 结构相等包括了结点的值相等
+ * 参考题解：
+ * https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/solution/mian-shi-ti-26-shu-de-zi-jie-gou-xian-xu-bian-li-p/
  */
 public class 树的子结构 {
-    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
-        if (root1 == null || root2 == null) {
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (A == null || B == null) {
             return false;
         }
-        boolean result  = false;
-        if (root1.val == root2.val) {
-            result = isSubTreeWithRoot(root1,root2);
+
+        boolean ret = false;
+        if (A.val == B.val) {
+            ret = isSubTree(A, B);
         }
-        if (!result) {
-            result = HasSubtree(root1.left, root2);
+        if (!ret) {
+            ret = isSubStructure(A.left, B);
         }
-        if (!result) {
-            result = HasSubtree(root1.right, root2);
+        if (!ret) {
+            ret = isSubStructure(A.right, B);
         }
-        return result;
+
+        return ret;
     }
 
-    private boolean isSubTreeWithRoot(TreeNode root1, TreeNode root2) {
-        if (root1 == null && root2 == null) { //递归出口
+    private boolean isSubTree(TreeNode A, TreeNode B) {
+        if (B == null) {
             return true;
         }
-        if (root1 == null || root2 == null) {
+        if (A == null || A.val != B.val) {
             return false;
         }
-        if (root1.val != root2.val) {
-            return false;
-        }
-        return isSubTreeWithRoot(root1.left, root2.left) && isSubTreeWithRoot(root1.right, root2.right);
-    }
 
+        return isSubTree(A.left, B.left) && isSubTree(A.right, B.right);
+    }
 }

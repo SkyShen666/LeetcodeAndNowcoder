@@ -1,6 +1,6 @@
 package 每日一题;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。
@@ -11,23 +11,18 @@ import java.util.Stack;
  * （注意：这两个序列的长度是相等的）
  */
 public class 栈的压入And弹出序列 {
-    public static void main(String[] args) {
-        int[] pushA = {1,2,3,4,5};
-        int[] popA = {4,5,3,2,1};
-        System.out.println(IsPopOrder(pushA, popA));
-    }
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        int n = pushed.length;
+        Deque<Integer> stack = new LinkedList<>();
 
-    public static boolean IsPopOrder(int [] pushA,int [] popA) {
-        int n = pushA.length;
-        Stack<Integer> stack = new Stack<>();
-        for (int pushId = 0, popId = 0; pushId < n; pushId++) {
-            stack.push(pushA[pushId]);
-            while (!stack.isEmpty() && popId < n
-                    && stack.peek() == popA[popId]) {
-                    stack.pop();
-                    popId++;
+        for (int i = 0, j = 0; i < n; i++) {
+            stack.push(pushed[i]);
+            while (!stack.isEmpty() && j < n && stack.peek() == popped[j]) {
+                stack.pop();
+                j++;
             }
         }
+
         return stack.isEmpty();
     }
 }

@@ -1,7 +1,6 @@
 package 每日一题;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * 输入一个字符串,按字典序打印出该字符串中字符的所有排列。
@@ -10,35 +9,45 @@ import java.util.Arrays;
  * 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。
  */
 public class 字符串的排列 {
-    ArrayList<String> ret = new ArrayList<>();
+    private List<String> list;
+    private char[] charArr;
+    private int n;
+    private boolean[] used;
 
-    public ArrayList<String> Permutation(String str) {
-        if (str.length() == 0)
-            return ret;
-        char[] chars = str.toCharArray();
-        Arrays.sort(chars);
-        backtracking(chars, new boolean[chars.length], new StringBuffer());
-        return ret;
+    public String[] permutation(String s) {
+        if (s == null || s.length() == 0) {
+            return new String[0];
+        }
+
+        charArr = s.toCharArray();
+        Arrays.sort(charArr);   // 排序方便去重
+        n = s.length();
+        used = new boolean[n];
+        list = new LinkedList<>();
+        StringBuilder path = new StringBuilder();
+
+        dfs(0, path);
+
+        return list.toArray(new String[0]);
     }
 
-    private void backtracking(char[] chars, boolean[] used, StringBuffer sb) {
-        if (chars.length == sb.length()) {
-            ret.add(sb.toString());
+    private void dfs(int begin, StringBuilder path) {
+        if (begin == n) {
+            list.add(path.toString());
             return;
         }
 
-        for (int i = 0; i < chars.length; i++) {
-            if (used[i])
-                continue;
-            if (i > 0 && chars[i - 1] == chars[i] && used[i - 1]) { //防止重复
-                continue;
+        for (int i = 0; i < n; i++) {
+            if (!used[i]) {
+                if (i > 0 && charArr[i - 1] == charArr[i] && !used[i - 1]) {
+                    continue;
+                }
+                used[i] = true;
+                path.append(charArr[i]);
+                dfs(begin + 1, path);
+                path.deleteCharAt(path.length() - 1);
+                used[i] = false;
             }
-            used[i] = true;
-            sb.append(chars[i]);
-            backtracking(chars, used, sb);
-            //回溯改为原来状态
-            sb.deleteCharAt(sb.length() - 1);
-            used[i] = false;
         }
     }
 }

@@ -1,30 +1,37 @@
 package 每日一题;
 
-import java.util.ArrayList;
+import java.util.*;
 /**
  * 输入一颗二叉树的根节点和一个整数，
  * 打印出二叉树中结点值的和为输入整数的所有路径。
  * 路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
  */
 public class 二叉树中和为某一值的路径 {
-    ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
-    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
-        backtracking(root, target, new ArrayList<>());
-        return ret;
-    }
-
-    private void backtracking(TreeNode node, int target, ArrayList<Integer> path) {
-        if (node == null) //递归出口
-            return;
-        path.add(node.val);
-        target -= node.val;
-        if (target == 0 && node.left == null && node.right == null) {
-            ret.add(new ArrayList<>(path));
-        } else {
-            backtracking(node.left, target, path);
-            backtracking(node.right, target, path);
+    private List<List<Integer>> list;
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        list = new LinkedList<>();
+        if (root == null) {
+            return list;
         }
-        path.remove(path.size() - 1);
+
+        Deque<Integer> path = new LinkedList<>();
+        dfs(root, sum, path);
+
+        return list;
     }
 
+    private void dfs(TreeNode root, int sum, Deque<Integer> path) {
+        if (root == null) {
+            return;
+        }
+
+        path.addLast(root.val);
+        if (sum == root.val && root.left == null && root.right == null) {
+            list.add(new ArrayList<>(path));
+        }
+        dfs(root.left, sum - root.val, path);
+        dfs(root.right, sum - root.val, path);
+
+        path.removeLast();
+    }
 }
