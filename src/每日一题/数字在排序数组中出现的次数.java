@@ -4,7 +4,6 @@ package 每日一题;
  * 统计一个数字在排序数组中出现的次数。
  */
 public class 数字在排序数组中出现的次数 {
-
     public static int GetNumberOfK(int[] array, int k) {
         int first = binarySearch(array, k);
         int last = binarySearch(array, k + 1);
