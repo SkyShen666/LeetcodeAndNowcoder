@@ -32,6 +32,7 @@ public class No_371Sum_of_Two_Integers {
             a = sum;
             b = carry;
         } while (carry != 0);
+
         return sum;
     }
 }

@@ -24,9 +24,9 @@ public class No_34第一个和最后一个位置 {
             // 当区间长度为偶数时：此种划分方式mid落在左边，区间将不断向左缩小。
             int mid = low + (high - low) / 2;
             if (nums[mid] == target) {
-                // 下一轮搜索空间为[left, right]
+                // 下一轮搜索空间为[low, high]
                 high = mid;
-            }else if (nums[mid] < target) {
+            } else if (nums[mid] < target) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
@@ -49,7 +49,7 @@ public class No_34第一个和最后一个位置 {
             if (nums[mid] == target) {
                 // 下一轮搜索区间为[mid, right]
                 low = mid;
-            }else if (nums[mid] < target) {
+            } else if (nums[mid] < target) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
