@@ -2,26 +2,42 @@ package 每日一题;
 
 
 /**
- * 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
- * n<=39
- * f(0) = 0                 n = 0
- * f(1) = 1                 n = 1
- * f(n) = f(n-1) + f(n-2)   n > 1
+ * 动态规划
+ *
  */
 public class 斐波那契数列 {
-    public int Fibonacci(int n) {
+    public int fib(int n) {
         if (n <= 1) {
             return n;
         }
-        int pre1 = 0, pre2 = 1;
-        int fib = 0;
+        int a = 0;
+        int b = 1;
+        int sum;
+
         for (int i = 2; i <= n; i++) {
-            fib = pre1 + pre2;
-            pre1 = pre2;
-            pre2 = fib;
+            sum = (a + b) % 1000000007;
+            a = b;
+            b = sum;
         }
-        return fib;
+
+        return b;
     }
+
+//    优化空间前
+//    public int fib(int n) {
+//        if (n <= 1) {
+//            return n;
+//        }
+//        int[] dp = new int[n + 1];
+//        dp[0] = 0;
+//        dp[1] = 1;
+//
+//        for (int i = 2; i <= n; i++) {
+//            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
+//        }
+//
+//        return dp[n];
+//    }
 }
 /**
  * 解法一：递归求解。缺点:会进行大量的重复计算 -->解决方法：动态规划
