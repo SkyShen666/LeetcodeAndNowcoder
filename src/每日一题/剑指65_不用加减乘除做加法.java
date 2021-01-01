@@ -6,15 +6,17 @@ package 每日一题;
  * 2、计算进位的位置，通过位与运算（&）和左移一位(<<)
  * 3、直到不产生进位为止
  */
-public class 不用加减乘除做加法 {
-    public int Add(int num1,int num2) {
+public class 剑指65_不用加减乘除做加法 {
+    public int add(int a, int b) {
         int sum, carry;
+
         do {
-            sum = num1 ^ num2; //没有进位的相加
-            carry = (num1 & num2) << 1; //计算进位
-            num1 = sum;
-            num2 = carry;
-        } while (num2 != 0);
+            sum = a ^ b;  //没有进位的相加
+            carry = (a & b) << 1; //计算进位
+            a = sum;
+            b = carry;
+        } while (carry != 0);
+
         return sum;
     }
 }
