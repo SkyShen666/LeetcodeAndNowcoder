@@ -27,16 +27,18 @@ public class QuickSort {
         }
     }
 
-    //partition就是划分操作
+    // partition 就是划分操作, 返回下标 low, 使得比 nums[low] 小的数都在 low 的左边，比 nums[low] 大的数都在 low 的右边。
     private static int partition(int[] a, int low, int high) {
-        int pivot = a[low]; //将当前表中的第一个元素设为枢轴值，对表进行划分
+        int pivot = a[low]; // 将当前表中的第一个元素设为枢轴值，对表进行划分
+
         while (low < high) {
             while (low < high && a[high] >= pivot) --high;
-            a[low] = a[high]; //将比枢轴值小的元素移动到左端m
+            a[low] = a[high]; // 将比枢轴值小的元素移动到左端
             while (low < high && a[low] <= pivot) ++low;
-            a[high] = a[low]; //将比枢轴值大的元素移动到右端
+            a[high] = a[low]; // 将比枢轴值大的元素移动到右端
         }
-        a[low] = pivot; //枢轴元素存放到最终位置
-        return low; //返回存放枢轴的最终位置
+        a[low] = pivot; // 枢轴元素存放到最终位置
+
+        return low; // 返回存放枢轴的最终位置
     }
 }
