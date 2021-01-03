@@ -15,6 +15,7 @@ public class 剑指_03数组中重复的数字 {
                 i++;
                 continue;
             }
+            // 找到重复的数字
             if (nums[nums[i]] == nums[i]) {
                 return nums[i];
             }

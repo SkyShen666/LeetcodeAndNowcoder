@@ -9,7 +9,7 @@ package 数学;
 //  如果候选人是maj , 则maj 会支持自己，其他候选人会反对，同样因为maj 票数超过一半，所以maj 一定会成功当选
 public class No_169多数元素 {
     public int majorityElement(int[] nums) {
-        int cnt = 0;
+        int cnt = 0;    // 票数
         int majority = nums[0];
 
         for (int num : nums) {
