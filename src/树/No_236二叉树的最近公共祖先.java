@@ -16,13 +16,13 @@ public class No_236二叉树的最近公共祖先 {
 
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
+
         if (left == null) {
             return right;
         }
         if (right == null) {
             return left;
         }
-
         return root;
     }
 }
