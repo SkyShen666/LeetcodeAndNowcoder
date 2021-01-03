@@ -1,9 +1,7 @@
 package 树;
 
-import java.util.LinkedList;
-import java.util.Queue;
 
-public class No_235Lowest_Common_Ancestor_of_a_Binary_Search_Tree_Easy {
+public class No_235二叉搜索树的最近公共祖先 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root.val > p.val && root.val > q.val) {
             return lowestCommonAncestor(root.left, p, q);
@@ -11,6 +9,7 @@ public class No_235Lowest_Common_Ancestor_of_a_Binary_Search_Tree_Easy {
         if (root.val < p.val && root.val < q.val) {
             return lowestCommonAncestor(root.right, p, q);
         }
+
         return root;
     }
 }
