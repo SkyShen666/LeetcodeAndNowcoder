@@ -10,7 +10,7 @@ package 链表;
  */
 // 参考题解：
 // https://leetcode-cn.com/problems/reverse-linked-list/solution/dong-hua-yan-shi-206-fan-zhuan-lian-biao-by-user74/
-public class No_206Reverse_Linked_List {
+public class No_206反转链表 {
     // 递归解法
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) {
@@ -20,6 +20,7 @@ public class No_206Reverse_Linked_List {
         ListNode cur = reverseList(head.next);
         head.next.next = head;
         head.next = null;
+
         return cur;
     }
 
