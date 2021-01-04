@@ -10,15 +10,20 @@ import java.util.Stack;
  *      2、一个元素进入in栈之后，出栈的顺序应该反转。
  *      3、当元素出栈时，需要所有元素先进入out栈，再从out栈出来顺序就被反转了。
  */
-public class 用两个栈实现一个队列 {
-    Stack<Integer> in = new Stack<Integer>();
-    Stack<Integer> out = new Stack<Integer>();
+public class 剑指_09用两个栈实现队列 {
+    private Stack<Integer> in;
+    private Stack<Integer> out;
 
-    public void push(int node) {
-        in.push(node);
+    public 剑指_09用两个栈实现队列() {
+        in = new Stack<>();
+        out = new Stack<>();
     }
 
-    public int pop() {
+    public void appendTail(int value) {
+        in.push(value);
+    }
+
+    public int deleteHead() {
         if (out.isEmpty()) {
             while (!in.isEmpty()) {
                 out.push(in.pop());
@@ -26,11 +31,7 @@ public class 用两个栈实现一个队列 {
         }
 
         if (out.isEmpty()) {
-            try {
-                throw new Exception("queue is Empty!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            return -1;
         }
 
         return out.pop();
