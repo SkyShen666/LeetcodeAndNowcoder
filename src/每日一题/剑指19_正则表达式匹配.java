@@ -13,16 +13,18 @@ package 每日一题;
 
 // 参考题解：
 // https://leetcode-cn.com/problems/regular-expression-matching/solution/dong-tai-gui-hua-zen-yao-cong-0kai-shi-si-kao-da-b/
-public class 正则表达式匹配 {
+public class 剑指19_正则表达式匹配 {
     // #代表任意字符
     public boolean isMatch(String s, String p) {
+        // 注意特殊case：s:"", p:".*", 应返回true
+        // 不要添加s.length() == 0 || p.length() == 0 的条件
         if (s == null || p == null) {
             return false;
         }
 
         int m = s.length(), n = p.length();
-        // dp[i][j]矩阵：行标i对应s的i- 1，列表j对应p的j - 1
-        // dp[i][j] 表示s的前i个是否能被p的前j个匹配
+        // dp[i][j]矩阵：行标 i 对应 s 的 i-1，列表 j 对应 p 的 j-1
+        // dp[i][j]表示: s 的前 i 个是否能被 p 的前 j 个匹配
         boolean[][] dp = new boolean[m + 1][n + 1];
 
         // s和p都是空串时=true
