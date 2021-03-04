@@ -11,6 +11,10 @@ public class 剑指06_从尾到头打印链表 {
     private List<Integer> list = new ArrayList<>();
 
     public int[] reversePrint(ListNode head) {
+        if (head == null) {
+            return new int[0];
+        }
+
         recur(head);
         int[] ret = new int[list.size()];
 

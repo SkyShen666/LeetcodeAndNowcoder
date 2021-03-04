@@ -3,10 +3,11 @@ import java.util.*;
 
 /**
  * 充分利用题目条件
+ * 原地交换
  * 参考题解：
  * https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/solution/mian-shi-ti-03-shu-zu-zhong-zhong-fu-de-shu-zi-yua/
  */
-public class 剑指_03数组中重复的数字 {
+public class 剑指03_数组中重复的数字 {
     public int findRepeatNumber(int[] nums) {
         int i = 0;
 

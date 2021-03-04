@@ -8,7 +8,7 @@ package 每日一题;
  * n-1 :     10110011
  * n&(n-1) : 10110000
  */
-public class 剑指_15二进制中1的个数 {
+public class 剑指15_二进制中1的个数 {
     public int hammingWeight(int n) {
         int cnt = 0;
 

@@ -16,7 +16,7 @@ import java.util.List;
  * !: 表示一个结点值的结束(value!)
  */
 
-public class 剑指_37序列化二叉树 {
+public class 剑指37_序列化二叉树 {
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         return preOrder(root, "");

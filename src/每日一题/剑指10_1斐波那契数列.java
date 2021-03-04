@@ -5,7 +5,7 @@ package 每日一题;
  * 动态规划
  *
  */
-public class 斐波那契数列 {
+public class 剑指10_1斐波那契数列 {
     public int fib(int n) {
         if (n <= 1) {
             return n;

@@ -3,7 +3,7 @@ package 每日一题;
 /**
  * 二分法：
  */
-public class 剑指_11旋转数组的最小数字 {
+public class 剑指11_旋转数组的最小数字 {
     public int minArray(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("数组为空！");

@@ -9,7 +9,7 @@ package 每日一题;
  *  1、遇到相同的就投一票，不同的就减一票
  *  2、当票数为0，就更新 “众数”
  */
-public class 剑指_39数组中出现次数超过一半的数字 {
+public class 剑指39_数组中出现次数超过一半的数字 {
     public int majorityElement(int[] nums) {
         int cnt = 0;
         int majority = nums[0];

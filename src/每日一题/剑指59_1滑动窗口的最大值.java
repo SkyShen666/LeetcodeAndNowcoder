@@ -7,7 +7,7 @@ import java.util.*;
  * 参考题解：
  * https://leetcode-cn.com/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/solution/mian-shi-ti-59-i-hua-dong-chuang-kou-de-zui-da-1-6/
  */
-public class 剑指59_1_滑动窗口的最大值 {
+public class 剑指59_1滑动窗口的最大值 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
             return new int[0];

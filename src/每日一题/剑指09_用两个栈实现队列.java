@@ -10,11 +10,11 @@ import java.util.Stack;
  *      2、一个元素进入in栈之后，出栈的顺序应该反转。
  *      3、当元素出栈时，需要所有元素先进入out栈，再从out栈出来顺序就被反转了。
  */
-public class 剑指_09用两个栈实现队列 {
+public class 剑指09_用两个栈实现队列 {
     private Stack<Integer> in;
     private Stack<Integer> out;
 
-    public 剑指_09用两个栈实现队列() {
+    public 剑指09_用两个栈实现队列() {
         in = new Stack<>();
         out = new Stack<>();
     }

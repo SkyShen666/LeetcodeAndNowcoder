@@ -2,7 +2,7 @@ package 每日一题;
 
 //考察点：归并排序
 // 就是问你归并排序过程中，你有几次是先取出右边的数来合并的。
-public class 剑指_51数组中的逆序对 {
+public class 剑指51_数组中的逆序对 {
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length < 2) {
             return 0;

@@ -1,6 +1,6 @@
 package 每日一题;
 
-public class 剑指_29顺时针打印矩阵 {
+public class 剑指29_顺时针打印矩阵 {
     public int[] spiralOrder(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return new int[0];

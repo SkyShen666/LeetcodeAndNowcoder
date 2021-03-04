@@ -8,7 +8,7 @@ import java.util.*;
  * 此处应用快排的，快速划分思想，时间复杂度为 O(n), 关于时间复杂度的分析，可参考题解
  * 快排的时间复杂度为 O(NlogN)
  */
-public class 剑指_40最小的k个数 {
+public class 剑指40_最小的k个数 {
     public int[] getLeastNumbers(int[] arr, int k) {
         if (arr == null || arr.length < k || k <= 0) {
             return new int[0];
