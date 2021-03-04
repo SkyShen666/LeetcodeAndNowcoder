@@ -2,6 +2,7 @@ package 每日一题;
 
 /**
  * 同 leetcode53题：连续子序和
+ * 贪心思想
  */
 public class 剑指42_连续子数组的最大和 {
     public int maxSubArray(int[] nums) {

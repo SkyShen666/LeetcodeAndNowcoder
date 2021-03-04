@@ -6,11 +6,14 @@ package 每日一题;
  *  https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/solution/mian-shi-ti-58-i-fan-zhuan-dan-ci-shun-xu-shuang-z/
  *  看动图即可
  */
-public class 翻转单词顺序列 {
+public class 剑指58_1翻转单词顺序 {
     public String reverseWords(String s) {
+        if (s == null || s.length() == 0) {
+            return s;
+        }
+
         s.trim();
-        int i = s.length() - 1;
-        int j = i;
+        int i = s.length() - 1, j = i;
         StringBuilder str = new StringBuilder();
 
         while (i >= 0) {

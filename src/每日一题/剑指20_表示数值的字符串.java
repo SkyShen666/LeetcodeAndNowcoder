@@ -16,7 +16,7 @@ import java.util.*;
  * 有限状态自动机 介绍
  * https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/solution/biao-shi-shu-zhi-de-zi-fu-chuan-by-leetcode-soluti/
  */
-public class 表示数值的字符串 {
+public class 剑指20_表示数值的字符串 {
     public boolean isNumber(String s) {
         Map[] states = {
                 new HashMap<>(){{ put(' ', 0); put('s', 1); put('d', 2); put('.', 4); }},  // 0.
