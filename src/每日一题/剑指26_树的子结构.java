@@ -1,12 +1,10 @@
 package 每日一题;
 
-import java.util.HashMap;
-
 /**
  * 参考题解：
  * https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/solution/mian-shi-ti-26-shu-de-zi-jie-gou-xian-xu-bian-li-p/
  */
-public class 树的子结构 {
+public class 剑指26_树的子结构 {
     public boolean isSubStructure(TreeNode A, TreeNode B) {
         if (A == null || B == null) {
             return false;

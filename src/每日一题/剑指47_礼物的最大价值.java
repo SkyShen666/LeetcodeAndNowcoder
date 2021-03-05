@@ -12,11 +12,13 @@ public class 剑指47_礼物的最大价值 {
         int m = grid.length;
         int n = grid[0].length;
         // dp[i][j] 表示从 grid[0][0] 到 grid[i - 1][j - 1] 的最大值
+        // 默认初始化dp 的 第一行和第一列都为 0
         int[][] dp = new int[m + 1][n + 1];
 
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]) + grid[i - 1][j - 1];
+                // 本次到达位置 + 上一次到达位置的最大路程
+                dp[i][j] = grid[i - 1][j - 1] + Math.max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
 

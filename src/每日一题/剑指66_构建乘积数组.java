@@ -13,21 +13,21 @@ import java.util.ArrayList;
  *      对于左边的累乘： 从左往右计算
  *      对于右边的累乘： 从右往左计算
  */
-public class 构建乘积数组 {
+public class 剑指66_构建乘积数组 {
     public int[] constructArr(int[] a) {
-        int len = a.length;
-        int[] b = new int[len];
+        int n = a.length;
+        int[] b = new int[n];
 
         // 记录从自己左边的累乘
         int temp = 1;
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < n; i++) {
             b[i] = temp;
             temp *= a[i];
         }
 
         // 从自己右边的累乘,注意要记录上左边的累乘结果
         temp = 1;
-        for (int i = len - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             b[i] *= temp;
             temp *= a[i];
         }
