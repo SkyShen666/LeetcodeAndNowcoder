@@ -6,10 +6,10 @@ import java.util.*;
  * 从上往下打印出二叉树的每个节点，同层节点从左至右打印
  * 使用队列进行层次遍历
  */
-public class 剑指32_从上到下打印二叉树 {
+public class 剑指32_1从上到下打印二叉树 {
     public int[] levelOrder(TreeNode root) {
         if (root == null) {
-            return new int[]{};
+            return new int[0];
         }
 
         Deque<TreeNode> queue = new LinkedList<>();

@@ -11,14 +11,14 @@ package 每日一题;
  */
 public class 剑指39_数组中出现次数超过一半的数字 {
     public int majorityElement(int[] nums) {
-        int cnt = 0;
         int majority = nums[0];
+        int cnt = 1;
 
-        for (int num : nums) {
+        for (int i = 1; i < nums.length; i++) {
             if (cnt == 0) {
-                majority = num;
+                majority = nums[i];
             }
-            cnt += (num == majority) ? 1 : -1;
+            cnt += nums[i] == majority ? 1 : -1;
         }
 
         return majority;

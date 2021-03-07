@@ -18,10 +18,11 @@ package 每日一题;
  *      2、给重复的结点安排上random指针
  *      3、拆出来
  */
-public class 复杂链表的复制 {
+public class 剑指35_复杂链表的复制 {
     public RandomListNode Clone(RandomListNode pHead) {
-        if (pHead == null)
+        if (pHead == null) {
             return null;
+        }
 
         //1、复制
         RandomListNode cur = pHead;

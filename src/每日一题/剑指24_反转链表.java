@@ -11,11 +11,13 @@ public class 剑指24_反转链表 {
         }
 
         ListNode pre = null;
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = pre;
-            pre = head;
-            head = next;
+        ListNode cur = head;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
 
         return pre;

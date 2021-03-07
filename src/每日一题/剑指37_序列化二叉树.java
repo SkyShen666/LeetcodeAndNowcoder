@@ -12,7 +12,7 @@ import java.util.List;
  * 二叉树的反序列化：
  * 根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。
  *
- * * #：表示空节点
+ * #：表示空节点
  * !: 表示一个结点值的结束(value!)
  */
 
@@ -31,6 +31,7 @@ public class 剑指37_序列化二叉树 {
             str = preOrder(node.left, str);
             str = preOrder(node.right, str);
         }
+
         return str;
     }
 
@@ -39,6 +40,7 @@ public class 剑指37_序列化二叉树 {
     public TreeNode deserialize(String data) {
         String[] dataArray = data.split(",");
         List<String> dataList = new ArrayList<>(Arrays.asList(dataArray));
+
         return buildTree(dataList);
     }
 
