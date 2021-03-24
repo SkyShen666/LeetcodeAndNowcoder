@@ -11,8 +11,7 @@ public class No_154寻找旋转数组中的最小值2 {
 
         while (low < high) {
             int mid = low + (high - low) / 2;
-            // 警惕{1,3,3} 没旋转
-            // 或 {3,3,1,3}
+            // 警惕{1,3,3} 没旋转 或 {3,3,1,3}
             // 防止没有旋转和最右侧元素与左侧元素重复
             if (nums[mid] == nums[high]) {
                 high--;

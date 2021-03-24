@@ -10,30 +10,29 @@ package 排序;
  */
 public class No_75颜色分类 {
     public void sortColors(int[] nums) {
-        int len = nums.length;
-        if (len < 2) {
+        if (nums == null || nums.length < 2) {
             return;
         }
 
-        int left = 0, right = len;
+        int p0 = 0, p2 = nums.length - 1;
         int curr = 0;
-        while (curr < right) {
+        while (curr <= p2) {
             if (nums[curr] == 0) {
-                swap(nums, curr, left);
-                left++;
+                swap(nums, curr, p0);
                 curr++;
+                p0++;
             } else if (nums[curr] == 1) {
                 curr++;
             } else {
-                right--;
-                swap(nums, curr, right);
+                swap(nums, curr, p2);
+                p2--;
             }
         }
     }
 
     private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
+        int tmp = nums[i];
         nums[i] = nums[j];
-        nums[j] = temp;
+        nums[j] = tmp;
     }
 }

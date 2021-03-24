@@ -17,7 +17,6 @@ public class 剑指14_1剪绳子 {
         }
 
         int[] dp = new int[n + 1];
-
         // 初始化
         dp[1] = 1;
         for (int i = 2; i <= n; i++) {

@@ -3,6 +3,7 @@ package 每日一题;
 import java.util.*;
 
 /**
+ *  约瑟夫环
  *  用 ArrayList 模拟
  *  参考题解：
  *  https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/solution/javajie-jue-yue-se-fu-huan-wen-ti-gao-su-ni-wei-sh/

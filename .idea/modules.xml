@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JUC/BlockingQueue/BlockingQueue.iml" filepath="$PROJECT_DIR$/../JUC/BlockingQueue/BlockingQueue.iml" />
       <module fileurl="file://$PROJECT_DIR$/../JUC/CAS/CAS.iml" filepath="$PROJECT_DIR$/../JUC/CAS/CAS.iml" />
       <module fileurl="file://$PROJECT_DIR$/../JUC/Container/Container.iml" filepath="$PROJECT_DIR$/../JUC/Container/Container.iml" />
       <module fileurl="file://$PROJECT_DIR$/../JUC/JUC.iml" filepath="$PROJECT_DIR$/../JUC/JUC.iml" />

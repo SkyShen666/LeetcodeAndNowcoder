@@ -8,21 +8,21 @@ import java.util.*;
  *  https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/solution/mian-shi-ti-06-cong-wei-dao-tou-da-yin-lian-biao-d/
  */
 public class 剑指06_从尾到头打印链表 {
-    private List<Integer> list = new ArrayList<>();
+    private List<Integer> list;
 
     public int[] reversePrint(ListNode head) {
         if (head == null) {
             return new int[0];
         }
 
+        list = new ArrayList<>();
         recur(head);
-        int[] ret = new int[list.size()];
-
+        int[] nums = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            ret[i] = list.get(i);
+            nums[i] = list.get(i);
         }
 
-        return ret;
+        return nums;
     }
 
     private void recur(ListNode head) {

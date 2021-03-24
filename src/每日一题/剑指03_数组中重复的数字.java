@@ -10,7 +10,6 @@ import java.util.*;
 public class 剑指03_数组中重复的数字 {
     public int findRepeatNumber(int[] nums) {
         int i = 0;
-
         while (i < nums.length) {
             if (nums[i] == i) {
                 i++;
