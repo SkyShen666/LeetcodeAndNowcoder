@@ -6,6 +6,9 @@ package 每日一题;
  */
 public class 剑指26_树的子结构 {
     public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (A == null && B == null) {
+            return true;
+        }
         if (A == null || B == null) {
             return false;
         }

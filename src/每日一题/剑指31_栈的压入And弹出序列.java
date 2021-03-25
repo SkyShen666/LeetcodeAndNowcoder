@@ -9,15 +9,15 @@ import java.util.*;
  * 序列4,5,3,2,1是该压栈序列对应的一个弹出序列，
  * 但4,3,5,1,2就不可能是该压栈序列的弹出序列。
  * （注意：这两个序列的长度是相等的）
+ *
+ *  思路：模拟一下出栈入栈的过程，如果最后栈内还有元素说明不可。
  */
 public class 剑指31_栈的压入And弹出序列 {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
-        int n = pushed.length;
         Deque<Integer> stack = new LinkedList<>();
-
-        for (int i = 0, j = 0; i < n; i++) {
+        for (int i = 0, j = 0; i < pushed.length; i++) {
             stack.push(pushed[i]);
-            while (!stack.isEmpty() && j < n && stack.peek() == popped[j]) {
+            while (!stack.isEmpty() && stack.peek() == popped[j]) {
                 stack.pop();
                 j++;
             }

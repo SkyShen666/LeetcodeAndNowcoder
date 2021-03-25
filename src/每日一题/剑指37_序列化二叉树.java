@@ -2,6 +2,7 @@ package 每日一题;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,32 +15,38 @@ import java.util.List;
  *
  * #：表示空节点
  * !: 表示一个结点值的结束(value!)
+ *
+ * 注意的点：
+ * 相比于题目给定的 "[1,2,3,null,null,4,5]" 会多输出 null 。
+ * 但本题的测试的是 序列化 和 反序列化是否可逆，因此 “序列化列表的形式” 并未限制，只要两个函数可以互逆就好啦
  */
 
 public class 剑指37_序列化二叉树 {
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        return preOrder(root, "");
+        StringBuilder sb = new StringBuilder();
+        return preorder(root, sb);
     }
 
     // 通过前序遍历序列化
-    private String preOrder(TreeNode node, String str) {
+    private String preorder(TreeNode node, StringBuilder sb) {
         if (node == null) {
-            str += "null,";
+            sb.append("null,");
         } else {
-            str += String.valueOf(node.val) + ",";
-            str = preOrder(node.left, str);
-            str = preOrder(node.right, str);
+            sb.append(String.valueOf(node.val) + ",");
+            preorder(node.left, sb);
+            preorder(node.right, sb);
         }
 
-        return str;
+        return sb.toString();
     }
 
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] dataArray = data.split(",");
-        List<String> dataList = new ArrayList<>(Arrays.asList(dataArray));
+        // 转化成
+        List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
 
         return buildTree(dataList);
     }

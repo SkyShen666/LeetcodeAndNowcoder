@@ -3,6 +3,7 @@ package 每日一题;
 import java.util.*;
 
 /**
+ * TopK 问题
  * 参考题解：
  * https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/solution/3chong-jie-fa-miao-sha-topkkuai-pai-dui-er-cha-sou/
  * 此处应用快排的，快速划分思想，时间复杂度为 O(n), 关于时间复杂度的分析，可参考题解
@@ -10,21 +11,19 @@ import java.util.*;
  */
 public class 剑指40_最小的k个数 {
     public int[] getLeastNumbers(int[] arr, int k) {
+        // 要注意k = 0 的情况
         if (arr == null || arr.length < k || k <= 0) {
             return new int[0];
         }
-
-        int low = 0, high = arr.length - 1;
-
         // 最后一个参数表示我们要找的是下标为 k-1 的数
-        return quickSearch(arr, low, high, k - 1);
+        return quickSearch(arr, 0, arr.length - 1, k - 1);
     }
 
     private int[] quickSearch(int[] arr, int low, int high, int k) {
         // 每快排切分1次，找到排序后下标为 pivotPos 的元素，如果 pivotPos 恰好等于k就返回 pivotPos 以及 pivotPos 左边所有的数；
         int pivotPos = partition(arr, low, high);
         if (pivotPos == k) {
-            return Arrays.copyOf(arr, pivotPos + 1);
+            return Arrays.copyOfRange(arr, 0, k + 1);
         }
 
         // 否则根据下标 pivotPos 与 k 的大小关系来决定继续切分左段还是右段。
