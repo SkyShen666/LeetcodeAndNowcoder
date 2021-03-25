@@ -18,7 +18,6 @@ public class 剑指50_第一个只出现一次的字符 {
 
         Map<Character, Boolean> dic = new LinkedHashMap<>();
         char[] charArr = s.toCharArray();
-
         for (char c : charArr) {
             dic.put(c, !dic.containsKey(c));
         }
@@ -40,7 +39,6 @@ public class 剑指50_第一个只出现一次的字符 {
 //
 //        Map<Character, Boolean> dic = new HashMap<>();
 //        char[] charArr = s.toCharArray();
-//
 //        for (char c : charArr) {
 //            dic.put(c, !dic.containsKey(c));
 //        }
