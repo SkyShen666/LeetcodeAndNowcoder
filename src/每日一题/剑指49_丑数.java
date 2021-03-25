@@ -17,7 +17,7 @@ public class 剑指49_丑数 {
         }
 
         int[] dp = new int[n];
-        dp[0] = 1; // 第一个丑数
+        dp[0] = 1; //  第一个丑数
         int i2 = 0, i3 = 0, i5 = 0;
 
         for (int i = 1; i < n; i++) {
