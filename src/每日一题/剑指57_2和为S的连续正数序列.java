@@ -9,26 +9,24 @@ import java.util.*;
  */
 public class 剑指57_2和为S的连续正数序列 {
     public int[][] findContinuousSequence(int target) {
-        int low = 1, high = 1;
-        int sum = 0;
+        int sum = 0;    // 滑动窗口元素总和
+        int begin = 1, end = 1; // 滑动窗口起点和终点
         List<int[]> list = new LinkedList<>();
-
-        while (low <= target / 2) {
+        while (begin <= target / 2) {
             if (sum < target) {
-                sum += high;
-                high++;
+                sum += end;
+                end++;
             } else if (sum > target) {
-                sum -= low;
-                low++;
+                sum -= begin;
+                begin++;
             } else {
-                int[] path = new int[high - low];
-                for (int i = low; i < high; i++) {
-                    path[i - low] = i;
+                int[] path = new int[end - begin];
+                for (int i = begin; i < end; i++) {
+                    path[i - begin] = i;
                 }
                 list.add(path);
-                // 窗口滑动
-                sum -= low;
-                low++;
+                sum -= begin;
+                begin++;
             }
         }
 
