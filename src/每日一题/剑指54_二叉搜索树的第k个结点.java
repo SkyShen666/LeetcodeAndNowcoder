@@ -3,34 +3,35 @@ package 每日一题;
 /**
  *  二叉搜索树的 中序倒序遍历
  *  利用二叉搜索树的性质
- *  中序遍历顺序： 右， 中， 左
+ *  中序倒序 遍历顺序： 右， 中， 左
+ *  正常中序遍历二叉搜索树： 从小到大
+ *  中序倒序遍历： 从大到小
  *  参考题解：
  *  https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/
  */
-public class 二叉搜索树的第k个结点 {
+public class 剑指54_二叉搜索树的第k个结点 {
     private int ret;
     private int k;
 
     public int kthLargest(TreeNode root, int k) {
         this.k = k;
-
-        dfs(root);
+        inorderReverse(root);
 
         return ret;
     }
 
-    private void dfs(TreeNode root) {
+    private void inorderReverse(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        dfs(root.right);
+        inorderReverse(root.right);
         if (k == 0) {
             return;
         }
         if (--k == 0) {
             ret = root.val;
         }
-        dfs(root.left);
+        inorderReverse(root.left);
     }
 }
