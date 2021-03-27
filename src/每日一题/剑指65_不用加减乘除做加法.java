@@ -9,10 +9,9 @@ package 每日一题;
 public class 剑指65_不用加减乘除做加法 {
     public int add(int a, int b) {
         int sum, carry;
-
         do {
-            sum = a ^ b;  //没有进位的相加
-            carry = (a & b) << 1; //计算进位
+            sum = a ^ b;  // 没有进位的相加
+            carry = (a & b) << 1; // 计算进位
             a = sum;
             b = carry;
         } while (carry != 0);
