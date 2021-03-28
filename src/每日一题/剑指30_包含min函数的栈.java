@@ -8,34 +8,34 @@ import java.util.*;
  * https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/solution/mian-shi-ti-30-bao-han-minhan-shu-de-zhan-fu-zhu-z/
  */
 public class 剑指30_包含min函数的栈 {
-    private Deque<Integer> stack;
-    private Deque<Integer> minStack;
+    private Stack<Integer> stack;
+    private Stack<Integer> min;
 
     /** initialize your data structure here. */
     public 剑指30_包含min函数的栈() {
-        stack = new LinkedList<>();
-        minStack = new LinkedList<>();
+        stack = new Stack<>();
+        min = new Stack<>();
     }
 
     public void push(int x) {
-        stack.addLast(x);
-        if (minStack.isEmpty() || minStack.peekLast() >= x) {
-            minStack.addLast(x);
+        stack.push(x);
+        if (min.isEmpty() || min.peek() >= x) {
+            min.push(x);
         }
     }
 
     public void pop() {
-        int num = stack.pollLast();
-        if (num == minStack.peekLast()) {
-            minStack.pollLast();
+        int num = stack.pop();
+        if (num == min.peek()) {
+            min.pop();
         }
     }
 
     public int top() {
-        return stack.peekLast();
+        return stack.peek();
     }
 
     public int min() {
-        return minStack.peekLast();
+        return min.peek();
     }
 }

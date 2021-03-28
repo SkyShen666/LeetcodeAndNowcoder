@@ -20,23 +20,20 @@ public class No_56合并区间 {
             return intervals;
         }
 
-
-        int n = intervals.length;
-        int[][] ret = new int[n][2];
         Arrays.sort(intervals, (o1, o2) -> o1[0] - o2[0]); // 根据每个区间的起始排序（升序）
+        int[][] ret = new int[intervals.length][2];
         int i = -1; // 此时代表res为空
-
         for (int[] interval : intervals) {
-            if (i == -1 || ret[i][1] < interval[0]) {
+            if (i == -1 || ret[i][1] < interval[0]) { // 上一个返回的区间的右边界小于当前遍历到的区间的左边界
                 i++;
                 ret[i] = interval;
-            } else {
+            } else { // 查看是否需要更新上一返回区间的右边界
                 ret[i][1] = Math.max(ret[i][1], interval[1]);
             }
         }
 
-        // 注意返回ret中有数据长度的数组
-        // 并且idx代表的索引，这里copyOf()方法的newLength是新数组长度，i要+1
+        // 注意返回ret中有数据长度的数组,ret在定义时定义的 长度为 intervals.length, 实际上可能不需要这么多。
+        // 并且i代表的索引，这里copyOf()方法的newLength是新数组长度，i要+1
         return Arrays.copyOf(ret, i + 1);
     }
 }
