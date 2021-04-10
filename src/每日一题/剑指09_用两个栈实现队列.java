@@ -24,16 +24,14 @@ public class 剑指09_用两个栈实现队列 {
     }
 
     public int deleteHead() {
-        if (out.isEmpty()) {
-            while (!in.isEmpty()) {
-                out.push(in.pop());
-            }
+        if (!out.isEmpty()) {
+            return out.pop();
         }
 
-        if (out.isEmpty()) {
-            return -1;
+        while (!in.isEmpty()) {
+            out.push(in.pop());
         }
 
-        return out.pop();
+        return out.isEmpty() ? -1 : out.pop();
     }
 }

@@ -1,7 +1,7 @@
 package 动态规划;
 
 /**
- * 参考题解：
+ * 参考题解：看的视频题解，注意是如何填写表格的
  * https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/
  * 例如：A ABCCBA A
  * 看字符串的两头是否相等
@@ -27,7 +27,7 @@ public class No_5最长回文子串 {
         }
         int max = 1;
         int begin = 0;
-        // 一列一列开始填（因为dp[i][j]参考它左下方的值dp[i+1][j-1]）
+        // 一列一列开始填（从上到下）（因为dp[i][j]参考它左下方的值dp[i+1][j-1]）
         for (int j = 1; j < n; j++) {
             for (int i = 0; i < j; i++) {
                 if (s.charAt(i) != s.charAt(j)) {
