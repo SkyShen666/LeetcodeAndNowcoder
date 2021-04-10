@@ -6,7 +6,7 @@ package 动态规划;
  * 可以看liweiwei题解
  * https://leetcode-cn.com/problems/combination-sum-iv/solution/dong-tai-gui-hua-python-dai-ma-by-liweiwei1419/
  */
-public class No377_组合总和4 {
+public class No_377组合总和4 {
     public int combinationSum4(int[] nums, int target) {
         if (nums == null) {
             return 0;

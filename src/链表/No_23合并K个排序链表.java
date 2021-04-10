@@ -41,15 +41,16 @@ public class No_23合并K个排序链表 {
     // 通过mid将数组一分为二，并不断缩小规模，当规模为1时返回并开始合并
     // 通过合并两个链表，不断增大其规模，整体看就是不断缩小-最后不断扩大的过程
     private ListNode merge(ListNode[] lists, int low, int high) {
-        if (low == high) {
+        if (low == high) { // // 划分成1个元素时，无法继续拆分，随即返回。
             return lists[low];
         }
 
+        // 1. 递归划分阶段
         int mid = low + (high - low) / 2;
-
         ListNode l1 = merge(lists, low, mid);
         ListNode l2 = merge(lists, mid + 1, high);
 
+        // 2. 合并阶段
         return merge2Lists(l1, l2);
     }
 

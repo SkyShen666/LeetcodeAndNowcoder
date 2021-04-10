@@ -7,66 +7,59 @@ import java.util.*;
 
 public class No_93复原IP地址 {
     private String s;
-    private int len;
-    private List<String> res;
+    private int n;
+    private List<String> list;
 
     public List<String> restoreIpAddresses(String s) {
-        res = new LinkedList<>();
-        if (s == null || s.length() == 0) {
-            return res;
-        }
-        len = s.length();
-        if (len < 4 || len > 12) {
-            return res;
+        list = new LinkedList<>();
+        if (s == null || s.length() < 4 || s.length() > 12) {
+            return list;
         }
 
-        // 初始化
         this.s = s;
+        this.n = s.length();
         Deque<String> path = new LinkedList<>();
-
         dfs(0, 0, path);
 
-        return res;
+        return list;
     }
 
-    private void dfs(int splitCount, int begin, Deque<String> path) {
-        if (begin == len) {
-            if (splitCount == 4) {
-                res.add(String.join(".", path));
+    private void dfs(int splitCnt, int begin, Deque<String> path) {
+        if (begin == n) {
+            if (splitCnt == 4) {
+                list.add(String.join(".", path));
             }
             return;
         }
 
-        // 剪枝
-        if ((len - begin) < (4 - splitCount) || (len - begin) > 3 * (4 - splitCount)) {
+        // 剪枝(不满足 最小、最大条件)
+        if ((n - begin) < (4 - splitCnt) || (n - begin) > 3 * (4 - splitCnt)) {
             return;
         }
-
+        // 寻找下一个ip地址块
         for (int i = 0; i < 3; i++) {
-            if (begin + i >= len) {
+            if (begin + i >= n) {
                 break;
             }
             int ipSegment = isIpSegment(begin, begin + i);
             if (ipSegment != -1) {
                 path.addLast(ipSegment + "");
-                dfs(splitCount + 1, begin + i + 1, path);
+                dfs(splitCnt + 1, begin + i + 1, path);
                 path.removeLast();
             }
         }
     }
 
     private int isIpSegment(int i, int j) {
-        int len = j - i + 1;
-
-        if (len > 1 && s.charAt(i) == '0') {
+        // ip地址块的长度大于1，且开头为'0'
+        if (j - i + 1 > 1 && s.charAt(i) == '0') {
             return -1;
         }
-
-        int res = 0;
+        int ipSegment = 0;
         for (int k = i; k <= j; k++) {
-            res = res * 10 + (s.charAt(k) - '0');
+            ipSegment = ipSegment * 10 + (s.charAt(k) - '0');
         }
 
-        return res > 255 ? -1 : res;
+        return ipSegment > 255 ? -1 : ipSegment;
     }
 }

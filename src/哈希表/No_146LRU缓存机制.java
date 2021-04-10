@@ -6,7 +6,7 @@ import java.util.*;
 // 参考题解：
 // https://leetcode-cn.com/problems/lru-cache/solution/ha-xi-biao-shuang-xiang-lian-biao-java-by-liweiw-2/
 public class No_146LRU缓存机制 {
-    // 双链表结点类
+    // 双向链表结点类
     private class DLinkedNode {
         private int key;
         private int value;
@@ -23,8 +23,8 @@ public class No_146LRU缓存机制 {
     }
 
     private Map<Integer, DLinkedNode> map;
-    private DLinkedNode dummyHead; // 虚拟头结点，无前驱
-    private DLinkedNode dummyTail; // 虚拟尾结点，无后继
+    private DLinkedNode dummyHead; // 虚拟头结点，无前驱，为了方便直接找到头结点
+    private DLinkedNode dummyTail; // 虚拟尾结点，无后继，为了方便直接找到尾结点
     private int capacity;
 
     public No_146LRU缓存机制(int capacity) {
@@ -42,20 +42,22 @@ public class No_146LRU缓存机制 {
         if (map.containsKey(key)) {
             DLinkedNode node = map.get(key);
             moveToFirst(node);
-
             return node.value;
         } else {
             return -1;
         }
     }
 
-    // 若缓存(哈希表)的容量满了,就要删除一个链表末尾元素，然后在链表头部插入新元素
+    /**
+     * 若缓存中存在，则更新数据，并将节点移到队头
+     * 若缓存中不存在：1）若缓存已满，删除队尾的节点,并在缓存中(map)删除
+     *                2）将新节点加入队头
+     */
     public void put(int key, int value) {
         if (map.containsKey(key)) {
             DLinkedNode node = map.get(key);
             node.value = value;
             moveToFirst(node);
-
             return;
         }
 
@@ -90,7 +92,6 @@ public class No_146LRU缓存机制 {
     private DLinkedNode removeLast() {
         DLinkedNode node = dummyTail.pre;
         remove(node);
-
         return node;
     }
 }

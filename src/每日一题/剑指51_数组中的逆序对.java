@@ -32,7 +32,7 @@ public class 剑指51_数组中的逆序对 {
         int ret = mergeSort(l, mid) + mergeSort(mid + 1, r);
 
         // 2. 合并阶段（并统计逆序对数量）
-        // 2.1 tmp存储合并前的左右子数组
+        // 2.1 tmp 存储合并前的左右子数组
         for (int k = l; k <= r; k++) {
             tmp[k] = nums[k];
         }
