@@ -9,11 +9,9 @@ package 每日一题;
  */
 public class 剑指43_从1到n整数中出现1的次数 {
     public int countDigitOne(int n) {
-        // 从1到n位开始计算
-        int digit = 1;
-        int cnt = 0;
-        // 整数n分为3部分
-        int high = n / 10, cur = n % 10, low = 0;
+        int cnt = 0; // 返回的结果
+        int digit = 1; // 从1到n位开始计算
+        int high = n / 10, cur = n % 10, low = 0; // 整数n分为3部分
 
         while (high != 0 || cur != 0) {
             if (cur == 0) {

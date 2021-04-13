@@ -39,13 +39,14 @@ public class No_146LRU缓存机制 {
 
     // 如果存在，把当前结点移动到双向链表的头部
     public int get(int key) {
-        if (map.containsKey(key)) {
-            DLinkedNode node = map.get(key);
-            moveToFirst(node);
-            return node.value;
-        } else {
+        // 1. 若不存在，直接返回-1
+        if (!map.containsKey(key)) {
             return -1;
         }
+        // 2. 更新至队列头结点
+        DLinkedNode node = map.get(key);
+        moveToFirst(node);
+        return node.value;
     }
 
     /**
@@ -54,44 +55,39 @@ public class No_146LRU缓存机制 {
      *                2）将新节点加入队头
      */
     public void put(int key, int value) {
+        // 1. 若key已存在
         if (map.containsKey(key)) {
             DLinkedNode node = map.get(key);
             node.value = value;
+            map.put(key, node);
             moveToFirst(node);
             return;
+        }else if (map.size() == capacity) { // 2. 若空间已满,先删除最后一个节点
+            DLinkedNode delNode = deleteNode(dummyTail.pre);
+            map.remove(delNode.key);
         }
-
-        if (map.size() == capacity) {
-            DLinkedNode node = removeLast();
-            // DLinkedNode 结点类设计 key 就是为了在这里删除
-            map.remove(node.key);
-        }
-
+        // 3. 插入头结点
         DLinkedNode node = new DLinkedNode(key, value);
         map.put(key, node);
-        addFirst(node);
+        insertToHead(node);
     }
 
     private void moveToFirst(DLinkedNode node) {
-        remove(node);
-        addFirst(node);
+        deleteNode(node);
+        insertToHead(node);
     }
 
-    private void remove(DLinkedNode node) {
+    private DLinkedNode deleteNode(DLinkedNode node) {
         node.pre.next = node.next;
         node.next.pre = node.pre;
-    }
-
-    private void addFirst(DLinkedNode node) {
-        node.next = dummyHead.next;
-        node.pre = dummyHead;
-        dummyHead.next.pre = node;
-        dummyHead.next = node;
-    }
-
-    private DLinkedNode removeLast() {
-        DLinkedNode node = dummyTail.pre;
-        remove(node);
         return node;
+    }
+
+    private void insertToHead(DLinkedNode node) {
+        DLinkedNode next = dummyHead.next;
+        dummyHead.next = node;
+        node.pre = dummyHead;
+        node.next = next;
+        next.pre = node;
     }
 }

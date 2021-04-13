@@ -16,7 +16,7 @@ public class 剑指31_栈的压入And弹出序列 {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
         Deque<Integer> stack = new LinkedList<>();
         for (int i = 0, j = 0; i < pushed.length; i++) {
-            stack.push(pushed[i]);
+            stack.push(pushed[i]);  // 注意先进栈
             while (!stack.isEmpty() && stack.peek() == popped[j]) {
                 stack.pop();
                 j++;
