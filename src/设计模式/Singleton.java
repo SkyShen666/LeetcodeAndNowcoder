@@ -24,7 +24,7 @@ public class Singleton {
         if (instance == null) {
             synchronized (Singleton.class) {
                 if (instance == null) {
-                    instance = new Singleton();
+                    instance = new Singleton(); // 在其他类中，不能new，只能通过Singleton.getInstance()获取
                 }
             }
         }

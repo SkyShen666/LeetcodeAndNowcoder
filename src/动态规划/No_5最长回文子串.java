@@ -20,19 +20,15 @@ public class No_5最长回文子串 {
             return s;
         }
 
-        // dp[i][j] 表示s[i, j]是否为回文串
         boolean[][] dp = new boolean[n][n];
-        for (int i = 0; i < n; i++) { // 可省略此初始化（实际上对角线上的值不会被其他状态参考）
+        for (int i = 0; i < n; i++) {
             dp[i][i] = true;
         }
         int max = 1;
         int begin = 0;
-        // 一列一列开始填（从上到下）（因为dp[i][j]参考它左下方的值dp[i+1][j-1]）
         for (int j = 1; j < n; j++) {
             for (int i = 0; i < j; i++) {
-                if (s.charAt(i) != s.charAt(j)) {
-                    dp[i][j] = false;
-                } else {
+                if (s.charAt(i) == s.charAt(j)) {
                     if (j - i < 3) {
                         dp[i][j] = true;
                     } else {
