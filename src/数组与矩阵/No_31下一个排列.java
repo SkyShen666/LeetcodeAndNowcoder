@@ -22,7 +22,7 @@ public class No_31下一个排列 {
         // 找到并交换一个比nums[i]更大的数（同样需要最大索引，需要从后往前遍历）
         if (i >= 0) {
             int j = nums.length - 1;
-            while (j >= 0 && nums[i] >= nums[j]) {
+            while (j > i && nums[i] >= nums[j]) {
                 j--;
             }
             if (i != j) { // 只有i=0，j=0时相等

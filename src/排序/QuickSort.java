@@ -4,16 +4,16 @@ import java.util.LinkedList;
 
 /**
  * 快速排序的基本思想是基于分治法的：
- *      1、在待排序表L[1...n]中任取一个元素pivot作为基准
- *      2、通过一趟排序将待排序表划分为独立的两个部分L[1...k-1]和L[k+1...n]
- *      3、其中L[1...k-1]中所有元素小于pivot，L[k+1...n]中所有元素大于或等于pivot
- *      4、pivot放在其最终位置L[k]上
+ * 1、在待排序表L[1...n]中任取一个元素pivot作为基准
+ * 2、通过一趟排序将待排序表划分为独立的两个部分L[1...k-1]和L[k+1...n]
+ * 3、其中L[1...k-1]中所有元素小于pivot，L[k+1...n]中所有元素大于或等于pivot
+ * 4、pivot放在其最终位置L[k]上
  * 以上4步操作称作为：一趟快速排序
  * 分别递归地对两个子表重复上述过程，直至每部分内只有一个元素或空为止，即所有元素都放在了其最终位置上
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int[] nums = {2,12,4,6,87,8,1,0,-1};
+        int[] nums = {2, 12, 4, 6, 87, 8, 1, 0, -1};
         int low = 0, high = nums.length - 1;
         quickSort(nums, low, high);
         for (int num : nums) {
@@ -36,7 +36,7 @@ public class QuickSort {
             LinkedList<Integer> stack = new LinkedList<>();
             stack.push(high);
             stack.push(low);
-            while(!stack.isEmpty()) {
+            while (!stack.isEmpty()) {
                 int l = stack.pop();
                 int r = stack.pop();
                 int pivotPos = partition(nums, l, r);

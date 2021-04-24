@@ -9,6 +9,10 @@ public class No_208实现前缀树 {
     private class TrieNode {
         private TrieNode[] childs = new TrieNode[26];
         private boolean isLeaf;
+
+        public TrieNode() {
+
+        }
     }
 
     private TrieNode root;
@@ -33,7 +37,6 @@ public class No_208实现前缀树 {
         }
         if (word.length() == 0) {
             node.isLeaf = true;
-
             return;
         }
 
@@ -60,7 +63,6 @@ public class No_208实现前缀树 {
         }
 
         int i = word.charAt(0) - 'a';
-
         return search(word.substring(1), node.childs[i]);
     }
 
@@ -80,7 +82,6 @@ public class No_208实现前缀树 {
         }
 
         int i = prefix.charAt(0) - 'a';
-
         return startsWith(prefix.substring(1), node.childs[i]);
     }
 }

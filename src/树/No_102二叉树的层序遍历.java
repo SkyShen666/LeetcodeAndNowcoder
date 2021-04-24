@@ -11,7 +11,6 @@ public class No_102二叉树的层序遍历 {
 
         Deque<TreeNode> queue = new LinkedList<>();
         queue.addLast(root);
-
         while(!queue.isEmpty()) {
             int n = queue.size();
             List<Integer> path = new LinkedList<>();

@@ -18,6 +18,7 @@ public class No_451根据字符出现频率排序 {
         }
 
         // 桶排序
+        // 1. 根据出现的频率装入对应的桶
         List<Character>[] buckets = new ArrayList[len + 1];
         for (char c : frequencyForChar.keySet()) {
             int frequency = frequencyForChar.get(c);
@@ -26,7 +27,7 @@ public class No_451根据字符出现频率排序 {
             }
             buckets[frequency].add(c);
         }
-
+        // 2. 根据每个桶中的元素构建返回字符串
         StringBuilder str = new StringBuilder();
         for (int i = buckets.length - 1; i >= 1; i--) {
             if (buckets[i] != null) {

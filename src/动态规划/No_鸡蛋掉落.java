@@ -3,7 +3,7 @@ package 动态规划;
 import java.util.Arrays;
 
 // 参考题解：
-//https://leetcode-cn.com/problems/super-egg-drop/solution/dong-tai-gui-hua-zhi-jie-shi-guan-fang-ti-jie-fang/
+// https://leetcode-cn.com/problems/super-egg-drop/solution/dong-tai-gui-hua-zhi-jie-shi-guan-fang-ti-jie-fang/
 public class No_鸡蛋掉落 {
     public int superEggDrop(int K, int N) {
         int[][] dp = new int[N + 1][K + 1];

@@ -57,10 +57,8 @@ public class No_912排序数组 {
     }
 }
 
-
+// 归并排序
 //public class Solution {
-//    // 归并排序
-//
 //    /**
 //     * 列表大小等于或小于该大小，将优先于 mergeSort 使用插入排序
 //     */
