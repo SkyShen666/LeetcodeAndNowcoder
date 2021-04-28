@@ -14,10 +14,12 @@ import java.util.*;
  */
 public class 剑指31_栈的压入And弹出序列 {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
-        Deque<Integer> stack = new LinkedList<>();
-        for (int i = 0, j = 0; i < pushed.length; i++) {
-            stack.push(pushed[i]);  // 注意先进栈
-            while (!stack.isEmpty() && stack.peek() == popped[j]) {
+        int n = pushed.length;
+        Stack<Integer> stack = new Stack<>();
+        int i = 0, j = 0;
+        while (i < n && j < n) {
+            stack.push(pushed[i++]);
+            while (!stack.isEmpty() && popped[j] == stack.peek()) {
                 stack.pop();
                 j++;
             }

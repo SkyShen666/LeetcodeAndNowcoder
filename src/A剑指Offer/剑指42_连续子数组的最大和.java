@@ -6,10 +6,6 @@ package A剑指Offer;
  */
 public class 剑指42_连续子数组的最大和 {
     public int maxSubArray(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-
         int tmpMax = nums[0];
         int max = tmpMax;
 

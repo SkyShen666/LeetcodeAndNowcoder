@@ -21,7 +21,7 @@ public class 剑指43_从1到n整数中出现1的次数 {
             } else {
                 cnt += (high + 1) * digit;
             }
-            low += cur * digit;
+            low = cur * digit + low;
             cur = high % 10;
             high = high / 10;
             digit = digit * 10;

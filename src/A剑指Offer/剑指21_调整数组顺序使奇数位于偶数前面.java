@@ -6,18 +6,19 @@ package A剑指Offer;
 public class 剑指21_调整数组顺序使奇数位于偶数前面 {
     public int[] exchange(int[] nums) {
         if (nums == null || nums.length == 0) {
-            return nums;
+            return new int[0];
         }
 
-        int low = 0, high = nums.length - 1;
-        while (low < high) {
-            while (low < high && nums[low] % 2 == 1) low++;
-            while (low < high && nums[high] % 2 == 0) high--;
-            swap(nums, low, high);
-            low++;
-            high--;
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            while (i < j && nums[i] % 2 == 1) i++;
+            while (i < j && nums[j] % 2 == 0) j--;
+            if (i < j) {
+                swap(nums, i, j);
+                i++;
+                j--;
+            }
         }
-
         return nums;
     }
 

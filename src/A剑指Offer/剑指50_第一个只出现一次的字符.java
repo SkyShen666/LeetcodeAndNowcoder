@@ -16,14 +16,13 @@ public class 剑指50_第一个只出现一次的字符 {
             return ' ';
         }
 
-        Map<Character, Boolean> dic = new LinkedHashMap<>();
-        char[] charArr = s.toCharArray();
-        for (char c : charArr) {
-            dic.put(c, !dic.containsKey(c));
+        Map<Character, Boolean> map = new LinkedHashMap<>();
+        for (char c : s.toCharArray()) {
+            map.put(c, !map.containsKey(c));
         }
-        for (Map.Entry<Character, Boolean> d : dic.entrySet()) {
-            if (d.getValue()) {
-                return d.getKey();
+        for (Map.Entry<Character, Boolean> entry : map.entrySet()) {
+            if (entry.getValue()) {
+                return entry.getKey();
             }
         }
 

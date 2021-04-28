@@ -15,7 +15,6 @@ public class 剑指32_2从上到下打印二叉树 {
 
         Deque<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-
         while (!queue.isEmpty()) {
             int n = queue.size();
             List<Integer> path = new LinkedList<>();

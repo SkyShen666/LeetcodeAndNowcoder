@@ -19,7 +19,7 @@ public class 剑指41_数据流中的中位数 {
 
     /** initialize your data structure here. */
     public 剑指41_数据流中的中位数() {
-        maxHeap = new PriorityQueue<>((x, y) -> (y - x));
+        maxHeap = new PriorityQueue<>((o1, o2) -> (o2 - o1));
         minHeap = new PriorityQueue<>();
     }
 
@@ -29,12 +29,16 @@ public class 剑指41_数据流中的中位数 {
             maxHeap.add(num);
             minHeap.add(maxHeap.poll());
         } else {    // 堆大小不相等(minHeap.size() = maxHeap.size() + 1)，需放入前面的大顶堆，但先要从后面的小顶堆过渡
-            minHeap.add(num);
-            maxHeap.add(minHeap.poll());
+            if (num > minHeap.peek()) {
+                maxHeap.add(minHeap.poll());
+                minHeap.add(num);
+            } else {
+                maxHeap.add(num);
+            }
         }
     }
 
     public double findMedian() {
-        return minHeap.size() != maxHeap.size() ? minHeap.peek() : (minHeap.peek() + maxHeap.peek()) / 2.0;
+        return maxHeap.size() != minHeap.size() ? minHeap.peek() : (maxHeap.peek() + minHeap.peek()) / 2.0;
     }
 }

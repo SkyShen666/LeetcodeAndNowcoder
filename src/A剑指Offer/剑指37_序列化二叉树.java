@@ -27,7 +27,7 @@ public class 剑指37_序列化二叉树 {
         return preorder(root, sb);
     }
 
-    // 通过前序遍历序列化
+    // 通过前序遍历序列化(以题目例子，生成了：1,2,,null,null,3,4,null,null,5,null,null,)
     private String preorder(TreeNode node, StringBuilder sb) {
         if (node == null) {
             sb.append("null,");

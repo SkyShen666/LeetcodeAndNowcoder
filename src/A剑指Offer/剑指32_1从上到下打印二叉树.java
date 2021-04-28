@@ -12,10 +12,9 @@ public class 剑指32_1从上到下打印二叉树 {
             return new int[0];
         }
 
+        List<Integer> list = new ArrayList<>();
         Deque<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        List<Integer> list = new ArrayList<>();
-
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             list.add(node.val);

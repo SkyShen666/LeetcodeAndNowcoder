@@ -37,7 +37,7 @@ public class 剑指35_复杂链表的复制 {
         cur = pHead;
         while (cur != null) {
             RandomListNode clone = cur.next;
-            if (cur.random != null) {
+            if (cur.random != null) { // 注意random可能指向null
                 clone.random = cur.random.next;
             }
             cur = clone.next;
