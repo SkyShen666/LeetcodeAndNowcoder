@@ -19,7 +19,7 @@ public class 剑指59_1滑动窗口的最大值 {
 
         // 1. 还未形成滑动窗口
         for (int i = 0; i < k; i++) {
-            // 维护单调队列
+            // 维护单调队列（队首为最大值）
             while (!deque.isEmpty() && deque.peekLast() < nums[i]) {
                 deque.pollLast();
             }

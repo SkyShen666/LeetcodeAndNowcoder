@@ -7,33 +7,30 @@ import java.util.*;
  */
 public class 剑指59_2队列的最大值 {
     private Queue<Integer> queue;
-    private Deque<Integer> deque; // 单调队列：由双端队列实现
+    private Deque<Integer> max;
 
     public 剑指59_2队列的最大值() {
         queue = new LinkedList<>();
-        deque = new LinkedList<>();
+        max = new LinkedList<>();
     }
 
     public int max_value() {
-        return deque.isEmpty() ? -1 : deque.peekFirst();
+        return max.isEmpty() ? -1 : max.peekFirst();
     }
 
     public void push_back(int value) {
-        // 维护单调队列
-        while (!deque.isEmpty() && deque.peekLast() < value) {
-            deque.pollLast();
+        while (!max.isEmpty() && max.peekLast() < value) {
+            max.pollLast();
         }
-        deque.offerLast(value);
+        max.offerLast(value);
         queue.offer(value);
     }
 
     public int pop_front() {
         int num = queue.isEmpty() ? -1 : queue.poll();
-        // 若移除的值为单调队列的最大值
-        if (!deque.isEmpty() && deque.peekFirst() == num) {
-            deque.pollFirst();
+        if (!max.isEmpty() && max.peekFirst() == num) {
+            max.pollFirst();
         }
-
         return num;
     }
 }

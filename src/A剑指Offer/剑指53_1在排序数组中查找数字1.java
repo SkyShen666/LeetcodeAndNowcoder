@@ -40,7 +40,7 @@ public class 剑指53_1在排序数组中查找数字1 {
             // left = mid 这里将会出现死循环，left不会增加,跳不出left < right
             int mid = low + (high - low + 1) / 2;
             if (nums[mid] == target) {
-                low = mid;
+                low = mid; // 将区间不断向右缩小
             } else if (nums[mid] < target) {
                 low = mid + 1;
             } else {

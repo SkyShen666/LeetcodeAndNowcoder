@@ -8,11 +8,10 @@ public class No_328奇偶链表 {
 
         ListNode odd = head, even = head.next;
         ListNode evenHead = even;
-
         while (odd.next != null && odd.next.next != null) {
-            odd.next = even.next;
+            odd.next = odd.next.next;
             odd = odd.next;
-            even.next = odd.next;
+            even.next = even.next.next;
             even = even.next;
         }
         odd.next = evenHead;

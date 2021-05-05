@@ -17,7 +17,6 @@ public class 剑指51_数组中的逆序对 {
 
         this.nums = nums;
         tmp = new int[nums.length];
-
         return mergeSort(0, nums.length - 1);
     }
 
@@ -45,7 +44,7 @@ public class 剑指51_数组中的逆序对 {
                 nums[k] = tmp[i++];
             } else {  // (tmp[i] > tmp[j]), 此时构成 mid - i + 1 个逆序对
                 nums[k] = tmp[j++]; // 把较小的tmp[j] 安排到左边
-                ret += mid - i + 1; // 统计逆序对,右边的数组和左边的数组都是从小到达的，此时右边的比左边这个元素x大的元素个数为：mid - i + 1
+                ret += mid - i + 1; // 统计逆序对,右边的数组和左边的数组都是从小到大的，此时左半段中的比右半段中的这个元素(tmp[j])大的元素个数为：mid - i + 1
             }
         }
 

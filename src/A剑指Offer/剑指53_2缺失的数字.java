@@ -12,14 +12,15 @@ package A剑指Offer;
 // 参考题解：(注意二分查找的两种开闭情况！！！)
 // https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/solution/xiang-jie-er-fen-cha-zhao-de-liang-chong-kai-bi-qi/
 public class 剑指53_2缺失的数字 {
+    // 注意二分查找的两种开闭情况！！！
     public int missingNumber(int[] nums) {
-        int low = 0, high = nums.length - 1;
-        while (low <= high) {
+        int low = 0, high = nums.length; // 注意此题high的初始值
+        while (low < high) {
             int mid = low + (high - low) / 2;
             if (nums[mid] == mid) {
                 low = mid + 1;
-            } else {
-                high = mid - 1;
+            } else if (nums[mid] > mid) {
+                high = mid; // 要找右半段数组中与下标第一个不相等的元素，要把区间不断向左压缩
             }
         }
 
@@ -27,15 +28,14 @@ public class 剑指53_2缺失的数字 {
     }
 }
 
-//    注意二分查找的两种开闭情况！！！
 //    public int missingNumber(int[] nums) {
-//        int low = 0, high = nums.length;
-//        while (low < high) {
+//        int low = 0, high = nums.length - 1;
+//        while (low <= high) {
 //            int mid = low + (high - low) / 2;
 //            if (nums[mid] == mid) {
 //                low = mid + 1;
-//            } else if (nums[mid] > mid) {
-//                high = mid;
+//            } else {
+//                high = mid - 1;
 //            }
 //        }
 //

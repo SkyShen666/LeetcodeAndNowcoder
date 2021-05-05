@@ -14,7 +14,7 @@ public class 剑指60_n个骰子的点数 {
             double[] tmp = new double[5 * k + 1];
             for (int i = 0; i < dp.length; i++) { // 上一次的结果，[0,1,2...] 代表此处概率的下标
                 for (int j = 0; j < 6; j++) { // 再一次掷筛子
-                    tmp[i + j] += dp[i] / 6.0; // dp[i] 在上一次的基础上除以6 (别忘了加上自己tmp[i + j])
+                    tmp[i + j] += dp[i] / 6.0; // dp[i] 在上一次的基础上除以6 (别忘了加上自己tmp[i + j]，因为可能有重复的下标（下标相同）)
                 }
             }
             dp = tmp;

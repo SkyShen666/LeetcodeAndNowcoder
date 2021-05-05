@@ -12,7 +12,6 @@ import java.util.*;
 public class 剑指62_圆圈中最后剩下的数字 {
     public int lastRemaining(int n, int m) {
         List<Integer> list = new ArrayList<>();
-
         for (int i = 0; i < n; i++) {
             list.add(i);
         }
