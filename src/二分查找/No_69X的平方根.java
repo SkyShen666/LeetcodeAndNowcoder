@@ -4,7 +4,7 @@ package 二分查找;
  * 参考题解：
  * https://leetcode-cn.com/problems/sqrtx/solution/er-fen-cha-zhao-niu-dun-fa-python-dai-ma-by-liweiw/
  */
-public class No_69 {
+public class No_69X的平方根 {
     public int mySqrt(int x) {
         if (x <= 1) {
             return x;

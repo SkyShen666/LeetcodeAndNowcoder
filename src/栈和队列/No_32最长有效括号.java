@@ -10,8 +10,8 @@ public class No_32最长有效括号 {
 
         int len = s.length();
         int max = 0;
-        int[] dp = new int[len]; // 以下标i字符结尾的最长有效括号的长度
-
+        // dp[i]：以下标i字符结尾的最长有效括号的长度
+        int[] dp = new int[len];
         for (int i = 1; i < len; i++) {
             if (s.charAt(i) == ')') { // 只在s[i] = ')'时记录
                 if (s.charAt(i - 1) == '(') { // ..().. 这种情况

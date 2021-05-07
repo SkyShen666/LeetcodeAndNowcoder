@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // 参考题解：
 // https://leetcode-cn.com/problems/super-egg-drop/solution/dong-tai-gui-hua-zhi-jie-shi-guan-fang-ti-jie-fang/
-public class No_鸡蛋掉落 {
+public class No_887鸡蛋掉落 {
     public int superEggDrop(int K, int N) {
         int[][] dp = new int[N + 1][K + 1];
 
@@ -53,7 +53,7 @@ public class No_鸡蛋掉落 {
     }
 
     public static void main(String[] args) {
-        No_鸡蛋掉落 egg = new No_鸡蛋掉落();
+        No_887鸡蛋掉落 egg = new No_887鸡蛋掉落();
         int res = egg.superEggDrop(3, 14);
         System.out.println(res);
     }

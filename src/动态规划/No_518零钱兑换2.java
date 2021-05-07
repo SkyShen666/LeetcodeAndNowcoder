@@ -29,7 +29,6 @@ public class No_518零钱兑换2 {
 
     // 优化后
     public int change(int amount, int[] coins) {
-        int n = coins.length;
         int[] dp = new int[amount + 1];
         dp[0] = 1;
         for (int coin : coins) {

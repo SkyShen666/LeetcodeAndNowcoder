@@ -6,6 +6,8 @@ package 数组与矩阵;
  * 比如当前 nums = [1,2,3]。这个数是123，找出1，2，3这3个数字排序可能的所有数，排序后，比123大的那个数 也就是132
  * 如果当前 nums = [3,2,1]。这就是1，2，3所有排序中最大的那个数，那么就返回1，2，3排序后所有数中最小的那个，也就是1，2，3 -> [1,2,3]
  * 参考题解：https://leetcode-cn.com/problems/next-permutation/solution/xia-yi-ge-pai-lie-by-powcai/
+ *
+ * lc 556 差不多的题型
  */
 public class No_31下一个排列 {
     public void nextPermutation(int[] nums) {
@@ -25,11 +27,11 @@ public class No_31下一个排列 {
             while (j > i && nums[i] >= nums[j]) {
                 j--;
             }
-            if (i != j) { // 只有i=0，j=0时相等
+            if (i < j) { // 只有i=0，j=0时相等
                 swap(nums, i, j);
             }
         }
-        // [i+1:] 都是升序，需要改成降序，翻转即可
+        // [i+1: len - 1] 都是升序，需要改成降序，翻转即可
         reverse(nums, i + 1, nums.length - 1);
     }
 

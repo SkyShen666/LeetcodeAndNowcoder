@@ -36,8 +36,8 @@ public class 剑指53_1在排序数组中查找数字1 {
         while (low < high) {
             // 当区间长度为偶数时：此种划分方式mid落在右边，区间将不断向右缩小。
             // 注意 right - left + 1，将mid划分到右边，避免出现死循环
-            // 若采用(right - left),将mid划分到左边，在剩余两个数时
-            // left = mid 这里将会出现死循环，left不会增加,跳不出left < right
+            // 若采用(right - left), 将mid划分到左边，在剩余两个数时
+            // left = mid 这里将会出现死循环，left不会增加, 跳不出left < right
             int mid = low + (high - low + 1) / 2;
             if (nums[mid] == target) {
                 low = mid; // 将区间不断向右缩小
